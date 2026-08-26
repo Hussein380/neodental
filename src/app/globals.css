@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-red: #DF0C0A;
+    --brand-navy: #081D32;
+    --brand-clinical: #6F9AB8;
+    --brand-ice: #F5F8FA;
+    --brand-dark: #10202E;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color: #10202E;
+    background-color: #FFFFFF;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  body {
+    overflow-x: hidden;
+    min-height: 100vh;
+    font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+
+  ::selection {
+    background-color: #DF0C0A;
+    color: #FFFFFF;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5F8FA;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6F9AB8;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #081D32;
+}
+
+/* Glassmorphism & Medical Card Utilities */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(111, 154, 184, 0.2);
+}
+
+.glass-panel-dark {
+  background: rgba(8, 29, 50, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(111, 154, 184, 0.25);
+}
+
+.medical-gradient {
+  background: linear-gradient(135deg, #081D32 0%, #0E2C4A 60%, #153B60 100%);
+}
+
+.medical-glow {
+  box-shadow: 0 0 50px -10px rgba(111, 154, 184, 0.35);
+}
+
+.subtle-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(111, 154, 184, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(111, 154, 184, 0.05) 1px, transparent 1px);
+}
+
+/* Reduced Motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
