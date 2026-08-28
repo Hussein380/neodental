@@ -31,7 +31,7 @@ export const Footer: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-sky-400/30">
             {/* Column 1: Brand & Identity (lg:col-span-4) */}
             <div className="lg:col-span-4 space-y-4">
-              <div className="inline-block bg-[#071B36] p-2.5 rounded-2xl shadow-md border border-white/10">
+              <div className="inline-block bg-white/15 p-2.5 rounded-2xl backdrop-blur-sm border border-white/20 shadow-sm">
                 <NeoLogo variant="dark" size="lg" />
               </div>
               <p className="text-sm text-sky-50 leading-relaxed max-w-sm">
