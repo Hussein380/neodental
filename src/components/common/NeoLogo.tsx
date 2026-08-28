@@ -15,7 +15,7 @@ export const NeoLogo: React.FC<NeoLogoProps> = ({
   variant = "default",
   size = "md",
 }) => {
-  const [imgSrc, setImgSrc] = React.useState<string>("/logo.png");
+  const [imgSrc, setImgSrc] = React.useState<string>("/logo_transparent.png");
   const [hasError, setHasError] = React.useState<boolean>(false);
 
   // Generous height dimensions tailored for the official logo badge
@@ -40,8 +40,8 @@ export const NeoLogo: React.FC<NeoLogoProps> = ({
           className={`${logoDimensions} object-contain`}
           priority
           onError={() => {
-            if (imgSrc === "/logo.png") {
-              setImgSrc("/images/logo.png");
+            if (imgSrc === "/logo_transparent.png") {
+              setImgSrc("/logo.png");
             } else {
               setHasError(true);
             }
