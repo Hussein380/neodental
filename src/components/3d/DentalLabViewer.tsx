@@ -63,9 +63,9 @@ function LabCrownModel({ current }: { current: LabPhase }) {
             isGold
               ? "#E5A93C"
               : isScan
-              ? "#6F9AB8"
+              ? "#38BDF8"
               : isWireframe
-              ? "#081D32"
+              ? "#0284C7"
               : "#FAFCFD"
           }
           wireframe={isWireframe}

@@ -64,7 +64,7 @@ export default function AboutPage() {
               </div>
               <div className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 text-neo-clinical flex-shrink-0 mt-0.5" />
-                <span>Open 7 days a week, 9:00 AM — 9:00 PM</span>
+                <span>Open 7 days a week, 9:00 AM — 7:00 PM</span>
               </div>
               <div className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 text-neo-clinical flex-shrink-0 mt-0.5" />
@@ -166,7 +166,7 @@ export default function AboutPage() {
                 Operating Hours
               </span>
               <p className="font-semibold text-neo-navy">
-                Monday — Sunday: 9:00 AM — 9:00 PM
+                Monday — Sunday: 9:00 AM — 7:00 PM
               </p>
               <p className="text-neo-muted text-xs">
                 Open 7 days a week (Holiday hours may vary).

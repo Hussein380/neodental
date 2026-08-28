@@ -13,16 +13,16 @@ export const CallToAction: React.FC = () => {
 
   return (
     <>
-      <section className="py-20 md:py-28 bg-gradient-to-r from-neo-navy via-neo-navy-light to-neo-navy text-white relative overflow-hidden">
-        {/* Animated glowing orbs (Guide 5.4) */}
+      <section className="py-20 md:py-28 bg-gradient-to-r from-sky-600 via-sky-500 to-sky-700 text-white relative overflow-hidden">
+        {/* Animated glowing orbs */}
         <motion.div
-          className="absolute -top-20 -left-20 w-96 h-96 bg-neo-red/15 rounded-full blur-3xl pointer-events-none"
-          animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.25, 0.1] }}
+          className="absolute -top-20 -left-20 w-96 h-96 bg-white/20 rounded-full blur-3xl pointer-events-none"
+          animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.3, 0.15] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute -bottom-20 -right-20 w-96 h-96 bg-neo-clinical/20 rounded-full blur-3xl pointer-events-none"
-          animate={{ scale: [1, 1.15, 1], opacity: [0.12, 0.22, 0.12] }}
+          className="absolute -bottom-20 -right-20 w-96 h-96 bg-sky-300/30 rounded-full blur-3xl pointer-events-none"
+          animate={{ scale: [1, 1.15, 1], opacity: [0.2, 0.35, 0.2] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
         />
 
@@ -42,7 +42,7 @@ export const CallToAction: React.FC = () => {
 
           <SlideUp delay={0.2}>
             <p className="text-sm md:text-base text-slate-300 max-w-xl mx-auto leading-relaxed">
-              Conveniently located on 14th Street, 1st Avenue, Eastleigh, Nairobi. Open 7 days a week, 9:00 AM — 9:00 PM.
+              Conveniently located on 14th Street, 1st Avenue, Eastleigh, Nairobi. Open 7 days a week, 9:00 AM — 7:00 PM.
             </p>
           </SlideUp>
 
@@ -92,7 +92,7 @@ export const CallToAction: React.FC = () => {
               <span>•</span>
               <span className="flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5 text-neo-clinical" />
-                Open Daily 9:00 AM – 9:00 PM
+                Open Daily 9:00 AM – 7:00 PM
               </span>
             </div>
           </FadeIn>

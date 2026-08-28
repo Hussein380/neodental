@@ -100,10 +100,10 @@ export const FeaturedTreatments: React.FC = () => {
         <div className="mt-14 text-center">
           <Link
             href="/treatments"
-            className="inline-flex items-center gap-2 py-4 px-9 rounded-full bg-neo-navy hover:bg-neo-navy-light text-white text-sm font-bold shadow-md transition-all duration-200 hover:scale-105"
+            className="inline-flex items-center gap-2 py-4 px-9 rounded-full bg-sky-600 hover:bg-sky-700 text-white text-sm font-bold shadow-md shadow-sky-600/20 transition-all duration-200 hover:scale-105"
           >
             <span>View All Dental Treatments</span>
-            <ArrowRight className="w-4 h-4 text-neo-red" />
+            <ArrowRight className="w-4 h-4 text-white" />
           </Link>
         </div>
       </div>

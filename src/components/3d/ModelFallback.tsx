@@ -105,7 +105,7 @@ export const ModelFallback: React.FC<ModelFallbackProps> = ({
                     cx={pos.cx}
                     cy={pos.cy}
                     r={isSelected ? "9" : "7"}
-                    fill={isSelected ? "#DF0C0A" : "#081D32"}
+                    fill={isSelected ? "#DF0C0A" : "#0284C7"}
                     className="transition-all duration-300 group-hover:scale-125"
                   />
                   <circle
@@ -113,7 +113,7 @@ export const ModelFallback: React.FC<ModelFallbackProps> = ({
                     cy={pos.cy}
                     r={isSelected ? "14" : "10"}
                     fill="none"
-                    stroke={isSelected ? "#DF0C0A" : "#6F9AB8"}
+                    stroke={isSelected ? "#DF0C0A" : "#38BDF8"}
                     strokeWidth="1.5"
                     className="animate-ping opacity-60"
                   />

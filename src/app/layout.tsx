@@ -22,7 +22,7 @@ const outfit = Outfit({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#081D32",
+  themeColor: "#0284C7",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "NeoDental Clinic — Dental Care & Laboratory in Eastleigh, Nairobi",
     description:
-      "Modern dental care, patient education, 3D tooth visualization, and in-house laboratory craftsmanship in Eastleigh, Nairobi. Open daily 9:00 AM — 9:00 PM.",
+      "Modern dental care, patient education, 3D tooth visualization, and in-house laboratory craftsmanship in Eastleigh, Nairobi. Open daily 9:00 AM — 7:00 PM.",
     url: CLINIC_CONFIG.domain,
     siteName: "NeoDental Clinic",
     locale: "en_KE",
@@ -72,8 +72,9 @@ export const metadata: Metadata = {
     ],
   },
   appleWebApp: {
-    title: "neodental",
+    title: "neodenta",
   },
+  manifest: "/manifest.json",
   robots: {
     index: true,
     follow: true,
@@ -129,7 +130,7 @@ export default function RootLayout({
           "Sunday",
         ],
         opens: "09:00",
-        closes: "21:00",
+        closes: "19:00",
       },
     ],
     medicalSpecialty: [
@@ -143,6 +144,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${jakarta.variable} ${outfit.variable}`}>
       <head>
+        <meta name="apple-mobile-web-app-title" content="neodenta" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(clinicSchema) }}

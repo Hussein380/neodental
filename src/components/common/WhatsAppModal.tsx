@@ -87,11 +87,11 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Sticky Header with Prominent Close Button */}
-        <div className="bg-gradient-to-r from-neo-navy via-slate-900 to-neo-navy text-white p-5 sm:p-6 relative flex-shrink-0">
+        <div className="bg-gradient-to-r from-sky-600 to-sky-700 text-white p-5 sm:p-6 relative flex-shrink-0">
           <button
             type="button"
             onClick={onClose}
-            className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/15 hover:bg-white/25 text-white flex items-center justify-center transition-all active:scale-95 shadow-sm"
+            className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-all active:scale-95 shadow-sm"
             aria-label="Close dialog"
           >
             <X className="w-5 h-5" />
@@ -151,7 +151,7 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({
               >
                 <option value="Morning (9:00 AM - 1:00 PM)">Morning (9:00 AM - 1:00 PM)</option>
                 <option value="Afternoon (1:00 PM - 5:00 PM)">Afternoon (1:00 PM - 5:00 PM)</option>
-                <option value="Evening (5:00 PM - 9:00 PM)">Evening (5:00 PM - 9:00 PM)</option>
+                <option value="Evening (5:00 PM - 7:00 PM)">Evening (5:00 PM - 7:00 PM)</option>
                 <option value="Urgent / Today">Urgent / Today</option>
               </select>
             </div>

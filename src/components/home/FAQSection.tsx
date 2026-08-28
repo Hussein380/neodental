@@ -33,7 +33,7 @@ const faqs: FAQItem[] = [
   },
   {
     question: "What are your opening hours and do you accept weekend appointments?",
-    answer: "NeoDental Clinic is open 7 days a week, Monday through Sunday, from 9:00 AM to 9:00 PM. We are always ready to accommodate weekend and evening dental visits. Operating hours may vary slightly on public holidays.",
+    answer: "NeoDental Clinic is open 7 days a week, Monday through Sunday, from 9:00 AM to 7:00 PM. We are always ready to accommodate weekend and evening dental visits. Operating hours may vary slightly on public holidays.",
   },
   {
     question: "How can I book an appointment quickly?",

@@ -33,7 +33,7 @@ export const PatientJourney: React.FC = () => {
       step: "03",
       title: "Gentle Examination",
       description: "Thorough clinical assessment to inspect teeth, gums, and oral tissues.",
-      icon: <Search className="w-5 h-5 text-neo-navy" />,
+      icon: <Search className="w-5 h-5 text-sky-600" />,
     },
     {
       step: "04",
@@ -45,13 +45,13 @@ export const PatientJourney: React.FC = () => {
       step: "05",
       title: "Custom Care Plan",
       description: "Review all appropriate treatment options together with clear transparency.",
-      icon: <FileText className="w-5 h-5 text-neo-clinical" />,
+      icon: <FileText className="w-5 h-5 text-sky-500" />,
     },
     {
       step: "06",
       title: "Gentle Treatment",
       description: "Modern care supported by our on-site dental lab for precision fit.",
-      icon: <HeartHandshake className="w-5 h-5 text-neo-navy" />,
+      icon: <HeartHandshake className="w-5 h-5 text-sky-600" />,
     },
     {
       step: "07",

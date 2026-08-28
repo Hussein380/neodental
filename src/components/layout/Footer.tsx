@@ -22,10 +22,10 @@ export const Footer: React.FC = () => {
 
   return (
     <>
-      <footer className="bg-neo-navy text-white pt-16 pb-24 md:pb-16 border-t border-neo-navy-light relative overflow-hidden">
+      <footer className="bg-slate-900 text-white pt-16 pb-24 md:pb-16 border-t border-sky-950 relative overflow-hidden">
         {/* Background glow accents */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-neo-clinical/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-neo-red/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-sky-500/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-sky-400/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-white/10">
@@ -147,7 +147,7 @@ export const Footer: React.FC = () => {
                   <Clock className="w-4 h-4 text-neo-clinical flex-shrink-0 mt-0.5" />
                   <div>
                     <span className="text-white font-medium block">Monday — Sunday</span>
-                    <span>9:00 AM — 9:00 PM (Daily)</span>
+                    <span>9:00 AM — 7:00 PM (Daily)</span>
                     <span className="text-[10px] text-slate-400 block mt-0.5">
                       Hours may vary during public holidays.
                     </span>

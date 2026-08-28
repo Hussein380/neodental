@@ -131,8 +131,8 @@ export const InteractiveTooth: React.FC<InteractiveToothProps> = ({
               >
                 <sphereGeometry args={[0.12, 16, 16]} />
                 <meshStandardMaterial
-                  color={isSelected ? "#DF0C0A" : "#081D32"}
-                  emissive={isSelected ? "#DF0C0A" : "#6F9AB8"}
+                  color={isSelected ? "#DF0C0A" : "#0284C7"}
+                  emissive={isSelected ? "#DF0C0A" : "#38BDF8"}
                   emissiveIntensity={isSelected ? 0.9 : 0.5}
                 />
               </mesh>
@@ -141,7 +141,7 @@ export const InteractiveTooth: React.FC<InteractiveToothProps> = ({
               <mesh>
                 <ringGeometry args={[0.14, 0.18, 24]} />
                 <meshBasicMaterial
-                  color={isSelected ? "#DF0C0A" : "#6F9AB8"}
+                  color={isSelected ? "#DF0C0A" : "#38BDF8"}
                   transparent
                   opacity={0.8}
                 />

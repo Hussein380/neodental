@@ -34,10 +34,10 @@ export const CLINIC_CONFIG = {
   },
 
   hours: {
-    display: "Monday — Sunday: 9:00 AM — 9:00 PM",
-    shortDisplay: "Open Daily 9:00 AM – 9:00 PM",
+    display: "Monday — Sunday: 9:00 AM — 7:00 PM",
+    shortDisplay: "Open Daily 9:00 AM – 7:00 PM",
     days: "Monday — Sunday (7 Days a Week)",
-    timeRange: "9:00 AM — 9:00 PM",
+    timeRange: "9:00 AM — 7:00 PM",
     holidayDisclaimer: "Hours may vary during public holidays.",
   },
 } as const;
