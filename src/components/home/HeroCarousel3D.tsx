@@ -88,12 +88,13 @@ export const HeroCarousel3D: React.FC = () => {
                 }}
               >
                 {/* Top: Image (Occupies 58% of the card for maximum clarity) */}
-                <div className="relative h-[58%] w-full shrink-0">
+                <div className="relative h-[58%] w-full shrink-0 bg-slate-900 overflow-hidden">
                   <Image
                     src={card.image}
                     alt={card.title}
                     fill
-                    priority={isActive}
+                    priority={true}
+                    loading="eager"
                     className="object-cover object-center"
                     sizes="(max-width: 1024px) 380px, 400px"
                   />

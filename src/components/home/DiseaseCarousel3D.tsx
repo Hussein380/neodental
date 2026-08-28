@@ -148,19 +148,20 @@ export const DiseaseCarousel3D: React.FC = () => {
                 }}
               >
                 {/* Top: Image (Occupies 58% of the card for maximum clarity) */}
-                <div className="relative h-[58%] w-full shrink-0">
+                <div className="relative h-[58%] w-full shrink-0 bg-slate-900 overflow-hidden">
                   <Image
                     src={card.image!}
                     alt={card.title}
                     fill
-                    priority={isActive}
+                    priority={true}
+                    loading="eager"
                     className="object-cover object-center"
                     sizes="(max-width: 1024px) 380px, 400px"
                   />
                   {/* Bottom shadow on image to make badge text readable */}
                   <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/80 to-transparent" />
                   
-                  {/* Badge positioned at the bottom left of the image/video */}
+                  {/* Badge positioned at the bottom left of the image */}
                   <div className="absolute bottom-3 left-4 sm:left-5">
                     <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase text-white drop-shadow-md">
                       {card.badge}
