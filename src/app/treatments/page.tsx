@@ -488,20 +488,20 @@ export default function TreatmentsHubPage() {
                     <div className="p-6 sm:p-7">
                       <div className="flex items-center gap-2 mb-2">
                         <span className="text-[11px] font-extrabold uppercase tracking-wider text-neo-clinical">
-                          {treatment.category}
+                          {((t.treatmentsCards as Record<string, { badge: string }>)?.[treatment.id]?.badge) || treatment.category}
                         </span>
                       </div>
 
                       {/* Title */}
                       <h3 className="text-xl font-extrabold text-neo-navy mb-2.5 group-hover:text-neo-red transition-colors leading-snug">
                         <Link href={`/treatments/${treatment.slug}`}>
-                          {treatment.title}
+                          {((t.treatmentsCards as Record<string, { title: string }>)?.[treatment.id]?.title) || treatment.title}
                         </Link>
                       </h3>
 
                       {/* Short Description */}
                       <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4 line-clamp-2">
-                        {treatment.shortDescription}
+                        {((t.treatmentsCards as Record<string, { shortDescription: string }>)?.[treatment.id]?.shortDescription) || treatment.shortDescription}
                       </p>
 
                       {/* Key Indications / Symptoms Mini Tags */}

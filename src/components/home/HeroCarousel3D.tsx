@@ -4,33 +4,37 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { treatmentsData } from "@/content/treatments";
-
-// Map treatments to images and formatted cards
-const CARDS = treatmentsData.map((t, i) => {
-  let image = "";
-  if (t.id === "emergency-pain-relief") image = "/images/service_emergency_1787732956743.jpg";
-  else if (t.id === "root-canal-treatment") image = "/images/service_rootcanal_1787732967899.jpg";
-  else if (t.id === "dental-crowns") image = "/images/service_crowns_1787732979887.jpg";
-  else if (t.id === "restorative-fillings") image = "/images/service_fillings_1787732991474.jpg";
-  else if (t.id === "dental-implants") image = "/images/service_implants_1787733002450.jpg";
-  else if (t.id === "cosmetic-dentistry-veneers") image = "/images/service_cosmetic_1787733042890.jpg";
-  else if (t.id === "orthodontic-assessment") image = "/images/service_ortho_new_1787740812764.jpg";
-  else if (t.id === "removable-appliances") image = "/images/service_dentures_new_1787740801330.jpg";
-  else if (t.id === "preventive-examination") image = "/images/service_preventive_new_1787740825070.jpg";
-  else if (t.id === "dental-laboratory-services") image = "/images/service_lab_new_1787740837341.jpg";
-
-  return {
-    id: t.id,
-    title: t.title.split("(")[0].trim(), // Clean up title
-    description: t.fullDescription || t.shortDescription, // Use full description for expansion
-    image,
-    badge: t.category.toUpperCase(),
-  };
-});
+import { useLanguage } from "@/context/LanguageContext";
 
 export const HeroCarousel3D: React.FC = () => {
+  const { t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isExpanded, setIsExpanded] = useState(false);
+
+  // Map treatments with dynamic translations
+  const CARDS = treatmentsData.map((item) => {
+    let image = "";
+    if (item.id === "emergency-pain-relief") image = "/images/service_emergency_1787732956743.jpg";
+    else if (item.id === "root-canal-treatment") image = "/images/service_rootcanal_1787732967899.jpg";
+    else if (item.id === "dental-crowns") image = "/images/service_crowns_1787732979887.jpg";
+    else if (item.id === "restorative-fillings") image = "/images/service_fillings_1787732991474.jpg";
+    else if (item.id === "dental-implants") image = "/images/service_implants_1787733002450.jpg";
+    else if (item.id === "cosmetic-dentistry-veneers") image = "/images/service_cosmetic_1787733042890.jpg";
+    else if (item.id === "orthodontic-assessment") image = "/images/service_ortho_new_1787740812764.jpg";
+    else if (item.id === "removable-appliances") image = "/images/service_dentures_new_1787740801330.jpg";
+    else if (item.id === "preventive-examination") image = "/images/service_preventive_new_1787740825070.jpg";
+    else if (item.id === "dental-laboratory-services") image = "/images/service_lab_new_1787740837341.jpg";
+
+    const tr = (t.treatmentsCards as Record<string, { title: string; shortDescription: string; badge: string }>)?.[item.id];
+
+    return {
+      id: item.id,
+      title: tr?.title || item.title.split("(")[0].trim(),
+      description: tr?.shortDescription || item.shortDescription,
+      image,
+      badge: tr?.badge || item.category.toUpperCase(),
+    };
+  });
 
   // Auto-rotate every 3 seconds, but PAUSE it if a card is expanded
   useEffect(() => {
@@ -40,7 +44,7 @@ export const HeroCarousel3D: React.FC = () => {
       setCurrentIndex((prev) => (prev + 1) % CARDS.length);
     }, 3000);
     return () => clearInterval(timer);
-  }, [isExpanded]);
+  }, [isExpanded, CARDS.length]);
 
   // Reset expansion state when changing slides
   useEffect(() => {

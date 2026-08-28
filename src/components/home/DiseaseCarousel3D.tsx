@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface DiseaseCard {
   id: string;
@@ -90,33 +91,57 @@ const DISEASES: DiseaseCard[] = [
 ];
 
 export const DiseaseCarousel3D: React.FC = () => {
+  const { t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isExpanded, setIsExpanded] = useState(false);
+
+  // Map disease cards dynamically with translation support
+  const diseaseList = [
+    { id: "decay", image: "/images/disease_decay_1787745508191.jpg" },
+    { id: "gum-disease", image: "/images/disease_gum_1787745519830.jpg" },
+    { id: "root-canal", image: "/images/service_rootcanal_1787732967899.jpg" },
+    { id: "recession", image: "/images/disease_recession_1787745531344.jpg" },
+    { id: "broken", image: "/images/disease_broken_1787745542094.jpg" },
+    { id: "missing", image: "/images/disease_missing_1787745554487.jpg" },
+    { id: "alignment", image: "/images/disease_crooked_1787746764805.jpg" },
+    { id: "discoloration", image: "/images/disease_stained_1787746775573.jpg" },
+    { id: "wisdom", image: "/images/disease_wisdom_1787747293448.jpg" },
+  ].map((item) => {
+    const d = (t.diseaseCards as Record<string, { title: string; badge: string; symptoms: string; treatment: string }>)?.[item.id];
+    return {
+      id: item.id,
+      title: d?.title || item.id,
+      badge: d?.badge || "DENTAL",
+      image: item.image,
+      symptoms: d?.symptoms || "",
+      treatment: d?.treatment || "",
+    };
+  });
 
   // Auto-rotate every 3 seconds, but PAUSE it if a card is expanded
   useEffect(() => {
     if (isExpanded) return;
     const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % DISEASES.length);
+      setCurrentIndex((prev) => (prev + 1) % diseaseList.length);
     }, 3000);
     return () => clearInterval(timer);
-  }, [isExpanded]);
+  }, [isExpanded, diseaseList.length]);
 
   // Reset expansion state when changing slides
   useEffect(() => {
     setIsExpanded(false);
   }, [currentIndex]);
 
-  const handleNext = () => setCurrentIndex((prev) => (prev + 1) % DISEASES.length);
-  const handlePrev = () => setCurrentIndex((prev) => (prev - 1 + DISEASES.length) % DISEASES.length);
+  const handleNext = () => setCurrentIndex((prev) => (prev + 1) % diseaseList.length);
+  const handlePrev = () => setCurrentIndex((prev) => (prev - 1 + diseaseList.length) % diseaseList.length);
 
   return (
     <div className="relative w-full h-[340px] sm:h-[400px] lg:h-[480px] flex items-center justify-center perspective-[1000px]">
       <div className="relative w-full max-w-[220px] sm:max-w-[260px] lg:max-w-[310px] h-full flex items-center justify-center">
         <AnimatePresence initial={false}>
-          {DISEASES.map((card, index) => {
+          {diseaseList.map((card, index) => {
             // Determine relative position using modulo arithmetic for N items
-            const len = DISEASES.length;
+            const len = diseaseList.length;
             const relativeIndex = (index - currentIndex + len) % len;
             
             const isActive = relativeIndex === 0;
@@ -202,7 +227,7 @@ export const DiseaseCarousel3D: React.FC = () => {
                   {/* Render content depending on expansion state */}
                   {!isExpanded ? (
                     <p className="text-xs sm:text-sm text-slate-500 leading-relaxed flex-1 line-clamp-1 sm:line-clamp-2">
-                      <span className="font-semibold text-slate-700">Symptoms:</span> {card.symptoms}
+                      <span className="font-semibold text-slate-700">{t.triage.symptomsLabel}:</span> {card.symptoms}
                     </p>
                   ) : (
                     <div className="flex-1 overflow-y-auto pr-1 py-1 space-y-3 text-xs sm:text-sm text-slate-600">
@@ -222,7 +247,7 @@ export const DiseaseCarousel3D: React.FC = () => {
                     onClick={() => setIsExpanded(!isExpanded)}
                     className="mt-2 pt-1.5 border-t border-slate-100 flex items-center justify-between text-[10px] sm:text-xs font-bold text-red-600 cursor-pointer"
                   >
-                    <span>{isExpanded ? "Close Details" : "Read Full Details"}</span>
+                    <span>{isExpanded ? t.triage.closeDetails : t.triage.readFullDetails}</span>
                     <span className="text-base leading-none">
                       {isExpanded ? "←" : "→"}
                     </span>

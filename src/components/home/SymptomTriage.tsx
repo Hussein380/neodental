@@ -98,17 +98,16 @@ export const SymptomTriage: React.FC = () => {
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 border border-red-100">
               <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse flex-shrink-0" />
               <span className="text-[11px] sm:text-xs font-bold text-red-600 tracking-wide uppercase whitespace-nowrap">
-                Clinical Education
+                {t.triage.badge}
               </span>
             </div>
 
             <h2 className="text-[2.2rem] sm:text-4xl lg:text-[2.8rem] font-extrabold leading-[1.1] tracking-tight text-slate-900">
-              Common Tooth <span className="text-red-600 block sm:inline">Diseases &amp; Concerns.</span>
+              {t.triage.titleStart} <span className="text-red-600 block sm:inline">{t.triage.titleHighlight}</span>
             </h2>
 
             <p className="text-sm sm:text-base lg:text-lg text-slate-600 leading-relaxed max-w-lg font-normal">
-              Understanding what is happening inside your mouth is the first step to a healthy smile.
-              Explore common dental issues, see exactly what they look like, and learn how our clinicians treat them.
+              {t.triage.subtitle}
             </p>
 
             <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
@@ -118,7 +117,7 @@ export const SymptomTriage: React.FC = () => {
                 className="inline-flex items-center justify-center gap-2.5 py-4 px-8 rounded-full bg-red-600 hover:bg-red-700 text-white font-bold text-sm shadow-lg shadow-red-600/20 hover:shadow-red-600/30 transition-all duration-200 active:scale-95"
               >
                 <MessageSquare className="w-5 h-5 fill-white" />
-                Ask a Dentist on WhatsApp
+                {t.triage.askDentistBtn}
               </button>
             </div>
           </div>
@@ -178,7 +177,7 @@ export const SymptomTriage: React.FC = () => {
                     aria-label="Unmute video"
                   >
                     <VolumeX className="w-3.5 h-3.5" />
-                    Tap to unmute
+                    {t.triage.videoTapUnmute}
                   </button>
                 )}
 
@@ -218,13 +217,13 @@ export const SymptomTriage: React.FC = () => {
               <div className="px-4 py-3 bg-slate-900 flex items-center justify-between gap-2">
                 <div>
                   <p className="text-white font-bold text-xs sm:text-sm leading-snug line-clamp-1">
-                    Tooth Decay: Causes, Symptoms &amp; Filling Restoration
+                    {t.triage.videoCardTitle}
                   </p>
-                  <p className="text-slate-400 text-[11px] mt-0.5">NeoDental Clinic · Clinical Education</p>
+                  <p className="text-slate-400 text-[11px] mt-0.5">{t.triage.videoCardSubtitle}</p>
                 </div>
                 <span className="shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-red-600/20 border border-red-500/30 text-red-400 text-[10px] font-bold uppercase tracking-wider">
                   <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-                  Live
+                  {t.triage.videoLiveBadge}
                 </span>
               </div>
             </div>
@@ -234,27 +233,18 @@ export const SymptomTriage: React.FC = () => {
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 border border-red-100">
                 <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse flex-shrink-0" />
                 <span className="text-[11px] sm:text-xs font-bold text-red-600 tracking-wide uppercase">
-                  Educational Video
+                  {t.triage.videoBadge}
                 </span>
               </div>
 
               <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
-                Watch: Understanding{" "}
-                <span className="text-red-600">Tooth Decay &amp; Cavities</span>
+                {t.triage.videoTitleStart}{" "}
+                <span className="text-red-600">{t.triage.videoTitleHighlight}</span>
               </h3>
 
               <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                Our clinical team explains exactly what causes cavities, how to recognise them early, and how NeoDental restores your tooth — in one gentle visit.
+                {t.triage.videoSubtitle}
               </p>
-
-              <ul className="space-y-2.5 text-sm text-slate-700">
-                {["What causes cavities and who is at risk", "Visual signs to look out for at home", "How composite fillings are placed painlessly", "After-care tips to keep teeth healthy longer"].map((point) => (
-                  <li key={point} className="flex items-start gap-2.5">
-                    <span className="mt-1 w-4 h-4 rounded-full bg-red-100 text-red-600 flex items-center justify-center flex-shrink-0 text-[10px] font-extrabold">✓</span>
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
 
               <button
                 type="button"
@@ -262,7 +252,7 @@ export const SymptomTriage: React.FC = () => {
                 className="inline-flex items-center gap-2 py-3 px-7 rounded-full bg-red-600 hover:bg-red-700 text-white font-bold text-sm shadow-lg shadow-red-600/20 transition-all active:scale-95"
               >
                 <MessageSquare className="w-4 h-4" />
-                Book a Consultation
+                {t.triage.bookConsultBtn}
               </button>
             </div>
 

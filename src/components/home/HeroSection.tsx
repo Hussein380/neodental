@@ -1,14 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { HeroCarousel3D } from "./HeroCarousel3D";
 import { WhatsAppModal } from "@/components/common/WhatsAppModal";
+import { useLanguage } from "@/context/LanguageContext";
 import { Calendar, ArrowRight } from "lucide-react";
 
 export const HeroSection: React.FC = () => {
+  const { t } = useLanguage();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Staggered animation variants
@@ -45,26 +46,22 @@ export const HeroSection: React.FC = () => {
           >
             {/* Headline */}
             <motion.h1 variants={itemVariants} className="text-[2.2rem] sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.1] tracking-tight text-slate-900">
-              Discover What We{" "}
-              <span className="text-red-600 block sm:inline">Offer You.</span>
+              {t.hero.titleStart}{" "}
+              <span className="text-red-600 block sm:inline">{t.hero.titleHighlight}</span>
             </motion.h1>
 
             {/* Subtitle */}
             <motion.p variants={itemVariants} className="text-sm sm:text-base lg:text-lg text-slate-600 leading-relaxed max-w-lg font-normal">
-              From routine cleanings to complete smile restorations, explore our full range of 
-              dental services. We provide <span className="font-semibold text-slate-900">expert care</span> for every stage of your dental health.
+              {t.hero.subtitle}
             </motion.p>
 
             {/* Trust stats — horizontal on sm+, text only */}
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row sm:flex-wrap gap-4 sm:gap-6 py-2">
               <div className="text-sm font-bold text-slate-700">
-                Zero Hidden Fees
+                ✓ {t.nav.dentalLab} (Eastleigh)
               </div>
               <div className="text-sm font-bold text-slate-700">
-                In-House Dental Lab
-              </div>
-              <div className="text-sm font-bold text-slate-700">
-                500+ Patients Served
+                ✓ {t.contact.hours}
               </div>
             </motion.div>
 
@@ -76,14 +73,14 @@ export const HeroSection: React.FC = () => {
                 className="inline-flex items-center justify-center gap-2.5 py-4 px-8 rounded-full bg-red-600 hover:bg-red-700 text-white font-bold text-sm shadow-lg shadow-red-600/20 hover:shadow-red-600/30 transition-all duration-200 active:scale-95"
               >
                 <Calendar className="w-5 h-5 fill-white" />
-                Book Appointment
+                {t.hero.bookBtn}
               </button>
 
               <Link
                 href="/treatments"
                 className="group inline-flex items-center justify-center gap-2 py-4 px-7 rounded-full bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-bold text-sm transition-all duration-200 shadow-sm"
               >
-                View Treatments
+                {t.hero.exploreBtn}
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </motion.div>
@@ -101,3 +98,4 @@ export const HeroSection: React.FC = () => {
     </section>
   );
 };
+
