@@ -71,6 +71,9 @@ export const metadata: Metadata = {
       },
     ],
   },
+  appleWebApp: {
+    title: "neodental",
+  },
   robots: {
     index: true,
     follow: true,
