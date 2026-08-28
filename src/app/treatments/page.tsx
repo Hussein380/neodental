@@ -301,49 +301,6 @@ export default function TreatmentsHubPage() {
           highlight="comfort, beauty & longevity."
           subtitle="Explore our comprehensive restorative, cosmetic, surgical, and custom lab solutions located in Eastleigh, Nairobi."
         />
-
-        {/* Quick Highlights Bar */}
-        <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-5xl mx-auto">
-          <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-xs">
-            <div className="w-10 h-10 rounded-xl bg-red-50 text-neo-red flex items-center justify-center flex-shrink-0">
-              <Zap className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="text-xs font-bold text-neo-navy leading-snug">Emergency Care</p>
-              <p className="text-[11px] text-neo-muted">Same-day pain relief</p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-xs">
-            <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center flex-shrink-0">
-              <Microscope className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="text-xs font-bold text-neo-navy leading-snug">In-House Lab</p>
-              <p className="text-[11px] text-neo-muted">Gold & Silver crowns</p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-xs">
-            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center flex-shrink-0">
-              <ShieldCheck className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="text-xs font-bold text-neo-navy leading-snug">Painless Protocol</p>
-              <p className="text-[11px] text-neo-muted">Modern local anesthesia</p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-xs">
-            <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
-              <Clock className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="text-xs font-bold text-neo-navy leading-snug">Open 7 Days</p>
-              <p className="text-[11px] text-neo-muted">9:00 AM – 9:00 PM</p>
-            </div>
-          </div>
-        </div>
       </div>
 
 
