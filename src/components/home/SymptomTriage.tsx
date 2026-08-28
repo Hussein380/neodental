@@ -14,10 +14,10 @@ export const SymptomTriage: React.FC = () => {
   const videoContainerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(true); // start muted for autoplay policy
+  const [isMuted, setIsMuted] = useState(false); // Default to unmuted
   const [hasStarted, setHasStarted] = useState(false);
 
-  // Auto-play (muted) when video scrolls into view; pause when it leaves
+  // Auto-play when video scrolls into view (attempt with audio first)
   useEffect(() => {
     const container = videoContainerRef.current;
     const video = videoRef.current;
@@ -27,11 +27,27 @@ export const SymptomTriage: React.FC = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            video.muted = true;
-            video.play().then(() => {
-              setIsPlaying(true);
-              setHasStarted(true);
-            }).catch(() => {});
+            // Attempt playing with audio first
+            video.muted = false;
+            setIsMuted(false);
+            video
+              .play()
+              .then(() => {
+                setIsPlaying(true);
+                setHasStarted(true);
+              })
+              .catch(() => {
+                // If browser blocks unmuted autoplay, fallback to muted autoplay
+                video.muted = true;
+                setIsMuted(true);
+                video
+                  .play()
+                  .then(() => {
+                    setIsPlaying(true);
+                    setHasStarted(true);
+                  })
+                  .catch(() => {});
+              });
           } else {
             video.pause();
             setIsPlaying(false);
