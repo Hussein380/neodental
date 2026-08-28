@@ -191,6 +191,32 @@ export const TreatmentInteractiveGuide: React.FC<TreatmentInteractiveGuideProps>
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
 
+  // Strict Viewport Optimization: Pause video when scrolled out of view to avoid scroll jank/lag
+  React.useEffect(() => {
+    const container = videoContainerRef.current;
+    const video = videoRef.current;
+    if (!container || !video) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            if (!video.paused) {
+              video.pause();
+              setIsPlaying(false);
+            }
+          } else {
+            video.play().then(() => setIsPlaying(true)).catch(() => {});
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, [videoData]);
+
   const togglePlay = () => {
     if (videoRef.current) {
       if (isPlaying) {
@@ -294,7 +320,7 @@ export const TreatmentInteractiveGuide: React.FC<TreatmentInteractiveGuideProps>
               {videoData ? (
                 <div
                   ref={videoContainerRef}
-                  className="lg:col-span-6 relative rounded-2xl overflow-hidden bg-slate-950 border border-slate-200 shadow-md min-h-[340px] sm:min-h-[420px] flex flex-col justify-between group"
+                  className="lg:col-span-6 relative rounded-2xl overflow-hidden bg-slate-950 border border-slate-200 shadow-md min-h-[340px] sm:min-h-[420px] flex flex-col justify-between group transform-gpu will-change-transform"
                 >
                   <video
                     ref={videoRef}
@@ -303,14 +329,14 @@ export const TreatmentInteractiveGuide: React.FC<TreatmentInteractiveGuideProps>
                     loop
                     muted={isMuted}
                     playsInline
-                    preload="auto"
+                    preload="metadata"
                     onPlay={() => setIsPlaying(true)}
                     onPause={() => setIsPlaying(false)}
                     onEnded={(e) => {
                       e.currentTarget.currentTime = 0;
                       e.currentTarget.play().catch(() => {});
                     }}
-                    className="w-full h-full object-cover absolute inset-0"
+                    className="w-full h-full object-cover absolute inset-0 transform-gpu"
                   />
 
                   {/* Gradient Overlay for controls */}
