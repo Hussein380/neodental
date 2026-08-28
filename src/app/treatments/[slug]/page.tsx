@@ -66,7 +66,17 @@ export default function TreatmentDetailPage({ params }: Props) {
         </Link>
       </div>
 
-      {/* 1. Hero Banner */}
+      {/* 1. Visual Clinical Guide & 3D Explorer (VIDEO AT THE VERY TOP) */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 text-left">
+        <TreatmentInteractiveGuide
+          slug={treatment.slug}
+          title={treatment.title}
+          category={treatment.category}
+          interactiveModelType={treatment.interactiveModelType}
+        />
+      </div>
+
+      {/* 2. Hero Overview Banner (Now beneath the video) */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         <div className="bg-gradient-to-br from-neo-navy via-neo-navy-light to-neo-navy text-white rounded-3xl p-8 md:p-14 relative overflow-hidden shadow-card">
           <div className="max-w-3xl space-y-5 relative z-10 text-left">
@@ -100,17 +110,8 @@ export default function TreatmentDetailPage({ params }: Props) {
         </div>
       </section>
 
-      {/* 2. Main Content Grid */}
+      {/* 3. Main Content Grid */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 text-left">
-        
-        {/* Section: Visual Clinical Guide & 3D Explorer (Brought to the TOP) */}
-        <TreatmentInteractiveGuide
-          slug={treatment.slug}
-          title={treatment.title}
-          category={treatment.category}
-          interactiveModelType={treatment.interactiveModelType}
-        />
-
         {/* Section: Overview & Symptoms */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           {/* Left Column: Full Description */}
