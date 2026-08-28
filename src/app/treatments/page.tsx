@@ -451,24 +451,7 @@ export default function TreatmentsHubPage() {
                           <span className={`text-[10px] sm:text-xs font-extrabold uppercase px-3 py-1 rounded-full shadow-sm ${meta.badgeColor}`}>
                             {meta.badge}
                           </span>
-                          {meta.hasVideo && (
-                            <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-red-600/90 text-white shadow-sm backdrop-blur-md flex items-center gap-1">
-                              <Play className="w-2.5 h-2.5 fill-white" />
-                              <span>Live Video</span>
-                            </span>
-                          )}
                         </div>
-
-                        {!treatment.isConfirmed ? (
-                          <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-white/90 backdrop-blur-md text-neo-navy font-bold shadow-xs">
-                            Consultation
-                          </span>
-                        ) : (
-                          <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-500/90 backdrop-blur-md text-white font-bold shadow-xs flex items-center gap-1">
-                            <CheckCircle2 className="w-3 h-3" />
-                            Confirmed
-                          </span>
-                        )}
                       </div>
 
                       {/* Quick Meta Chips pinned at bottom of video/image */}
