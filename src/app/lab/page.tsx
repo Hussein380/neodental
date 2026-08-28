@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { WhatsAppModal } from "@/components/common/WhatsAppModal";
@@ -13,10 +13,74 @@ import {
   Layers,
   Award,
   Zap,
+  Play,
+  Pause,
+  Volume2,
+  VolumeX,
+  Maximize,
 } from "lucide-react";
 
 export default function DentalLabPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Lab video player
+  const videoContainerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const [hasStarted, setHasStarted] = useState(false);
+
+  // Auto-play (muted) when section scrolls into view
+  useEffect(() => {
+    const container = videoContainerRef.current;
+    const video = videoRef.current;
+    if (!container || !video) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.muted = true;
+            video.play().then(() => {
+              setIsPlaying(true);
+              setHasStarted(true);
+            }).catch(() => {});
+          } else {
+            video.pause();
+            setIsPlaying(false);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
+
+  const togglePlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.paused) {
+      video.play().catch(() => {});
+      setIsPlaying(true);
+      setHasStarted(true);
+    } else {
+      video.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const toggleMute = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = !isMuted;
+    setIsMuted(!isMuted);
+  };
+
+  const handleFullscreen = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.requestFullscreen) video.requestFullscreen().catch(() => {});
+  };
 
   return (
     <div className="pt-32 pb-24 bg-white">
@@ -28,6 +92,142 @@ export default function DentalLabPage() {
           subtitle="NeoDental features an on-site dental laboratory on 14th Street in Eastleigh, where custom crowns, bridges, and dental appliances are handcrafted with precision."
         />
 
+        {/* ── LAB VIDEO HERO ── */}
+        <div ref={videoContainerRef} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-16">
+
+          {/* LEFT — compact video player */}
+          <div className="relative rounded-2xl overflow-hidden bg-slate-950 shadow-xl shadow-slate-900/25 border border-slate-800/40">
+            <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+              <video
+                ref={videoRef}
+                src="/videos/labaratory.mp4"
+                preload="metadata"
+                muted
+                playsInline
+                loop
+                onPlay={() => { setIsPlaying(true); setHasStarted(true); }}
+                onPause={() => setIsPlaying(false)}
+                onEnded={() => setIsPlaying(false)}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
+
+              {/* Big play overlay before first play */}
+              {!hasStarted && (
+                <button
+                  type="button"
+                  onClick={togglePlay}
+                  aria-label="Play lab video"
+                  className="absolute inset-0 flex items-center justify-center z-20 group"
+                >
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-neo-red/90 hover:bg-neo-red backdrop-blur-md flex items-center justify-center shadow-xl shadow-red-600/40 transition-all duration-200 group-hover:scale-110 active:scale-95">
+                    <Play className="w-6 h-6 sm:w-7 sm:h-7 fill-white text-white ml-0.5" />
+                  </div>
+                </button>
+              )}
+
+              {/* Unmute nudge */}
+              {hasStarted && isMuted && (
+                <button
+                  type="button"
+                  onClick={toggleMute}
+                  className="absolute top-3 right-3 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/70 hover:bg-neo-red backdrop-blur-md text-white text-[11px] font-bold transition-all active:scale-95"
+                  aria-label="Unmute video"
+                >
+                  <VolumeX className="w-3.5 h-3.5" />
+                  Tap to unmute
+                </button>
+              )}
+
+              {/* Bottom controls */}
+              <div className="absolute bottom-0 inset-x-0 z-20 px-4 py-3 flex items-center justify-between">
+                <button
+                  type="button"
+                  onClick={togglePlay}
+                  aria-label={isPlaying ? "Pause" : "Play"}
+                  className="w-9 h-9 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-md text-white flex items-center justify-center transition-all active:scale-90"
+                >
+                  {isPlaying ? <Pause className="w-4 h-4 fill-white" /> : <Play className="w-4 h-4 fill-white ml-0.5" />}
+                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={toggleMute}
+                    aria-label={isMuted ? "Unmute" : "Mute"}
+                    className="w-9 h-9 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-md text-white flex items-center justify-center transition-all active:scale-90"
+                  >
+                    {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleFullscreen}
+                    aria-label="Fullscreen"
+                    className="w-9 h-9 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-md text-white flex items-center justify-center transition-all active:scale-90"
+                  >
+                    <Maximize className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Caption bar */}
+            <div className="px-4 py-3 bg-slate-900 flex items-center justify-between gap-2">
+              <div>
+                <p className="text-white font-bold text-xs sm:text-sm leading-snug line-clamp-1">
+                  How Custom Dental Restorations Are Crafted
+                </p>
+                <p className="text-slate-400 text-[11px] mt-0.5">Dental Lab · Precision Fabrication Process</p>
+              </div>
+              <span className="shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-600/20 border border-amber-500/30 text-amber-400 text-[10px] font-bold uppercase tracking-wider">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+                Education
+              </span>
+            </div>
+          </div>
+
+          {/* RIGHT — description */}
+          <div className="space-y-5">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-100">
+              <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse flex-shrink-0" />
+              <span className="text-[11px] sm:text-xs font-bold text-amber-700 tracking-wide uppercase">
+                Lab Restorations
+              </span>
+            </div>
+
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-neo-navy leading-tight">
+              Precision-Crafted{" "}
+              <span className="text-amber-600">Dental Restorations</span>
+            </h3>
+
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+              Modern dental laboratories use highly specialised equipment to fabricate crowns, bridges, and prosthetics with micron-level accuracy. At NeoDental, our on-site lab works directly with treating clinicians to ensure a perfect fit and shade match — no external delays.
+            </p>
+
+            <ul className="space-y-2.5 text-sm text-slate-700">
+              {[
+                "Custom gold & silver crown fabrication on-site",
+                "Direct shade matching with treating clinician",
+                "Same-day adjustments — no external lab delays",
+                "Precision ceramic bridges and partial dentures",
+              ].map((point) => (
+                <li key={point} className="flex items-start gap-2.5">
+                  <span className="mt-1 w-4 h-4 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center flex-shrink-0 text-[10px] font-extrabold">✓</span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+
+            <button
+              type="button"
+              onClick={() => setIsModalOpen(true)}
+              className="inline-flex items-center gap-2 py-3 px-7 rounded-full bg-neo-navy hover:bg-neo-navy-light text-white font-bold text-sm shadow-lg transition-all active:scale-95"
+            >
+              <Calendar className="w-4 h-4" />
+              Consult on Custom Restorations
+            </button>
+          </div>
+
+        </div>
         {/* Real Lab Photography Showcase Card */}
         <div className="bg-white rounded-3xl border border-neo-clinical/25 shadow-card overflow-hidden mb-16 text-left">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">

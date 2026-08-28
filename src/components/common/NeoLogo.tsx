@@ -15,9 +15,10 @@ export const NeoLogo: React.FC<NeoLogoProps> = ({
   variant = "default",
   size = "md",
 }) => {
-  const isDark = variant === "dark";
+  const [imgSrc, setImgSrc] = React.useState<string>("/logo.png");
+  const [hasError, setHasError] = React.useState<boolean>(false);
 
-  // Generous height dimensions tailored for the new official logo badge
+  // Generous height dimensions tailored for the official logo badge
   const logoDimensions = {
     sm: "h-11 w-auto",
     md: "h-14 sm:h-16 w-auto",
@@ -30,14 +31,27 @@ export const NeoLogo: React.FC<NeoLogoProps> = ({
       className={`inline-flex items-center select-none group transition-transform duration-200 hover:scale-[1.02] ${className}`}
       aria-label="NeoDental Clinic Homepage"
     >
-      <Image
-        src="/logo.png"
-        alt="NeoDental Clinic Logo"
-        width={180}
-        height={180}
-        className={`${logoDimensions} object-contain`}
-        priority
-      />
+      {!hasError ? (
+        <Image
+          src={imgSrc}
+          alt="NeoDental Clinic Logo"
+          width={180}
+          height={180}
+          className={`${logoDimensions} object-contain`}
+          priority
+          onError={() => {
+            if (imgSrc === "/logo.png") {
+              setImgSrc("/images/logo.png");
+            } else {
+              setHasError(true);
+            }
+          }}
+        />
+      ) : (
+        <div className="flex items-center gap-2 font-extrabold text-xl tracking-tight text-neo-navy">
+          <span className="text-neo-red">Neo</span>Dental
+        </div>
+      )}
     </Link>
   );
 };

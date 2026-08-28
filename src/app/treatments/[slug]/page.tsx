@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Metadata } from "next";
 import { treatmentsData } from "@/content/treatments";
 import { TreatmentBookingButton } from "./TreatmentBookingButton";
+import { TreatmentInteractiveGuide } from "@/components/treatments/TreatmentInteractiveGuide";
 import {
   CheckCircle2,
   ArrowRight,
@@ -102,6 +103,14 @@ export default function TreatmentDetailPage({ params }: Props) {
       {/* 2. Main Content Grid */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 text-left">
         
+        {/* Section: Visual Clinical Guide & 3D Explorer (Brought to the TOP) */}
+        <TreatmentInteractiveGuide
+          slug={treatment.slug}
+          title={treatment.title}
+          category={treatment.category}
+          interactiveModelType={treatment.interactiveModelType}
+        />
+
         {/* Section: Overview & Symptoms */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           {/* Left Column: Full Description */}

@@ -4,7 +4,17 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
-const DISEASES = [
+interface DiseaseCard {
+  id: string;
+  title: string;
+  badge: string;
+  image?: string;
+  videoSrc?: string;
+  symptoms: string;
+  treatment: string;
+}
+
+const DISEASES: DiseaseCard[] = [
   {
     id: "decay",
     title: "Tooth Decay (Cavities)",
@@ -86,7 +96,6 @@ export const DiseaseCarousel3D: React.FC = () => {
   // Auto-rotate every 3 seconds, but PAUSE it if a card is expanded
   useEffect(() => {
     if (isExpanded) return;
-    
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % DISEASES.length);
     }, 3000);
@@ -141,7 +150,7 @@ export const DiseaseCarousel3D: React.FC = () => {
                 {/* Top: Image (Occupies 58% of the card for maximum clarity) */}
                 <div className="relative h-[58%] w-full shrink-0">
                   <Image
-                    src={card.image}
+                    src={card.image!}
                     alt={card.title}
                     fill
                     priority={isActive}
@@ -151,7 +160,7 @@ export const DiseaseCarousel3D: React.FC = () => {
                   {/* Bottom shadow on image to make badge text readable */}
                   <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/80 to-transparent" />
                   
-                  {/* Badge positioned at the bottom left of the image */}
+                  {/* Badge positioned at the bottom left of the image/video */}
                   <div className="absolute bottom-3 left-4 sm:left-5">
                     <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase text-white drop-shadow-md">
                       {card.badge}

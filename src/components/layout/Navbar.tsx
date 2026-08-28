@@ -49,7 +49,6 @@ export const Navbar: React.FC = () => {
       href: "/treatments",
       hasDropdown: true,
     },
-    { name: t.nav.learn, href: "/learn" },
     { name: t.nav.dentalLab, href: "/lab" },
     { name: t.nav.about, href: "/about" },
     { name: t.nav.contact, href: "/contact" },
