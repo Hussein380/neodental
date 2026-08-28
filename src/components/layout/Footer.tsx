@@ -22,24 +22,26 @@ export const Footer: React.FC = () => {
 
   return (
     <>
-      <footer className="bg-slate-900 text-white pt-16 pb-24 md:pb-16 border-t border-sky-950 relative overflow-hidden">
+      <footer className="bg-gradient-to-b from-sky-600 via-sky-700 to-sky-800 text-white pt-16 pb-24 md:pb-16 border-t border-sky-400/30 relative overflow-hidden">
         {/* Background glow accents */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-sky-500/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-sky-400/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-sky-300/20 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-white/10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-sky-400/30">
             {/* Column 1: Brand & Identity (lg:col-span-4) */}
             <div className="lg:col-span-4 space-y-4">
-              <NeoLogo variant="dark" size="lg" />
-              <p className="text-sm text-slate-300 leading-relaxed max-w-sm">
+              <div className="inline-block bg-[#071B36] p-2.5 rounded-2xl shadow-md border border-white/10">
+                <NeoLogo variant="dark" size="lg" />
+              </div>
+              <p className="text-sm text-sky-50 leading-relaxed max-w-sm">
                 {t.footer.tagline}
               </p>
               <div className="pt-2 flex flex-wrap gap-2.5">
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(true)}
-                  className="py-2 px-4 rounded-xl bg-neo-red hover:bg-neo-red-hover text-white text-xs font-bold shadow-sm transition-all duration-200 active:scale-95 flex items-center gap-1.5"
+                  className="py-2.5 px-4 rounded-xl bg-neo-red hover:bg-neo-red-hover text-white text-xs font-bold shadow-md transition-all duration-200 active:scale-95 flex items-center gap-1.5"
                 >
                   <Calendar className="w-3.5 h-3.5 fill-white" />
                   <span>Book Appointment</span>
@@ -48,9 +50,9 @@ export const Footer: React.FC = () => {
                   href="https://wa.me/254729884108?text=Hello%20NeoDental%20Clinic,%20I%20would%20like%20to%20inquire%20about%20a%20dental%20appointment."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="py-2 px-4 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all flex items-center gap-1.5"
+                  className="py-2.5 px-4 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm"
                 >
-                  <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
+                  <MessageSquare className="w-3.5 h-3.5 text-emerald-300" />
                   <span>WhatsApp Us</span>
                 </a>
               </div>
@@ -58,10 +60,10 @@ export const Footer: React.FC = () => {
 
             {/* Column 2: Quick Links (lg:col-span-2) */}
             <div className="lg:col-span-2 space-y-3">
-              <h4 className="text-xs font-bold text-neo-clinical-light uppercase tracking-wider">
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider">
                 {t.footer.quickLinks}
               </h4>
-              <ul className="space-y-2 text-sm text-slate-300">
+              <ul className="space-y-2 text-sm text-sky-100">
                 <li>
                   <Link href="/" className="hover:text-white transition-colors">
                     {t.nav.home}
@@ -92,17 +94,17 @@ export const Footer: React.FC = () => {
 
             {/* Column 3: Key Treatments (lg:col-span-3) */}
             <div className="lg:col-span-3 space-y-3">
-              <h4 className="text-xs font-bold text-neo-clinical-light uppercase tracking-wider">
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider">
                 {t.footer.services}
               </h4>
-              <ul className="space-y-2 text-xs text-slate-300">
+              <ul className="space-y-2 text-xs text-sky-100">
                 {treatmentCategories.slice(0, 6).map((cat) => (
                   <li key={cat.id}>
                     <Link
                       href={`/treatments#${cat.id}`}
-                      className="hover:text-neo-clinical-light transition-colors flex items-center gap-1.5"
+                      className="hover:text-white transition-colors flex items-center gap-1.5"
                     >
-                      <span className="w-1 h-1 rounded-full bg-neo-red" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-neo-red" />
                       <span>{cat.name}</span>
                     </Link>
                   </li>
@@ -112,11 +114,11 @@ export const Footer: React.FC = () => {
 
             {/* Column 4: Confirmed Location & Contacts (lg:col-span-3) */}
             <div className="lg:col-span-3 space-y-4">
-              <h4 className="text-xs font-bold text-neo-clinical-light uppercase tracking-wider">
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider">
                 {t.footer.contactInfo}
               </h4>
               
-              <div className="space-y-3 text-xs text-slate-300">
+              <div className="space-y-3 text-xs text-sky-100">
                 <div className="flex items-start gap-2">
                   <MapPin className="w-4 h-4 text-neo-red flex-shrink-0 mt-0.5" />
                   <div>
@@ -126,7 +128,7 @@ export const Footer: React.FC = () => {
                 </div>
 
                 <div className="flex items-start gap-2">
-                  <Phone className="w-4 h-4 text-neo-clinical flex-shrink-0 mt-0.5" />
+                  <Phone className="w-4 h-4 text-sky-200 flex-shrink-0 mt-0.5" />
                   <div className="space-y-0.5">
                     <a
                       href="tel:+254729884108"
@@ -136,7 +138,7 @@ export const Footer: React.FC = () => {
                     </a>
                     <a
                       href="tel:+254721284884"
-                      className="hover:text-white text-slate-400 block"
+                      className="hover:text-white text-sky-200 block"
                     >
                       0721 284 884 (Additional Clinic Line)
                     </a>
@@ -144,11 +146,11 @@ export const Footer: React.FC = () => {
                 </div>
 
                 <div className="flex items-start gap-2">
-                  <Clock className="w-4 h-4 text-neo-clinical flex-shrink-0 mt-0.5" />
+                  <Clock className="w-4 h-4 text-sky-200 flex-shrink-0 mt-0.5" />
                   <div>
                     <span className="text-white font-medium block">Monday — Sunday</span>
                     <span>9:00 AM — 7:00 PM (Daily)</span>
-                    <span className="text-[10px] text-slate-400 block mt-0.5">
+                    <span className="text-[10px] text-sky-200/80 block mt-0.5">
                       Hours may vary during public holidays.
                     </span>
                   </div>
@@ -158,9 +160,9 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Bottom Bar: Disclaimer & Copyright */}
-          <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400 text-center md:text-left">
+          <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-sky-200 text-center md:text-left">
             <div className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-neo-clinical flex-shrink-0" />
+              <ShieldCheck className="w-4 h-4 text-sky-300 flex-shrink-0" />
               <span>{t.footer.disclaimer}</span>
             </div>
             <p>{t.footer.copyright}</p>
