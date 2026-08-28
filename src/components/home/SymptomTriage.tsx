@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { DiseaseCarousel3D } from "./DiseaseCarousel3D";
 import { WhatsAppModal } from "@/components/common/WhatsAppModal";
 import { useLanguage } from "@/context/LanguageContext";
+import { SlideIn, SlideUp, FadeIn } from "@/components/common/MotionWrappers";
 import { MessageSquare, Play, Pause, Volume2, VolumeX, Maximize } from "lucide-react";
 
 export const SymptomTriage: React.FC = () => {
@@ -94,7 +95,7 @@ export const SymptomTriage: React.FC = () => {
         <div className="flex flex-col lg:grid lg:grid-cols-2 min-h-[60vh] lg:min-h-[70vh] items-center gap-6 sm:gap-8 lg:gap-12">
 
           {/* LEFT — Copy & CTAs */}
-          <div className="pt-4 sm:pt-6 lg:py-16 space-y-6 w-full text-left">
+          <SlideIn direction="left" className="pt-4 sm:pt-6 lg:py-16 space-y-6 w-full text-left">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 border border-red-100">
               <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse flex-shrink-0" />
               <span className="text-[11px] sm:text-xs font-bold text-red-600 tracking-wide uppercase whitespace-nowrap">
@@ -120,12 +121,12 @@ export const SymptomTriage: React.FC = () => {
                 {t.triage.askDentistBtn}
               </button>
             </div>
-          </div>
+          </SlideIn>
 
           {/* RIGHT — 3D Rotating Disease Carousel */}
-          <div className="relative block w-full h-[370px] sm:h-[440px] lg:h-[530px] mt-8 lg:mt-0 pt-4 lg:pt-8">
+          <SlideIn direction="right" className="relative block w-full h-[370px] sm:h-[440px] lg:h-[530px] mt-8 lg:mt-0 pt-4 lg:pt-8">
             <DiseaseCarousel3D />
-          </div>
+          </SlideIn>
         </div>
 
         {/* ── STANDALONE EDUCATIONAL VIDEO SECTION ── */}
@@ -135,7 +136,7 @@ export const SymptomTriage: React.FC = () => {
           <div ref={videoContainerRef} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
             {/* LEFT — compact video player */}
-            <div className="relative rounded-2xl overflow-hidden bg-slate-950 shadow-xl shadow-slate-900/25 border border-slate-800/40">
+            <SlideIn direction="left" className="relative rounded-2xl overflow-hidden bg-slate-950 shadow-xl shadow-slate-900/25 border border-slate-800/40">
               {/* 16:9 aspect ratio */}
               <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
                 <video
@@ -226,10 +227,10 @@ export const SymptomTriage: React.FC = () => {
                   {t.triage.videoLiveBadge}
                 </span>
               </div>
-            </div>
+            </SlideIn>
 
             {/* RIGHT — description card */}
-            <div className="space-y-5">
+            <SlideIn direction="right" className="space-y-5">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 border border-red-100">
                 <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse flex-shrink-0" />
                 <span className="text-[11px] sm:text-xs font-bold text-red-600 tracking-wide uppercase">
@@ -254,7 +255,7 @@ export const SymptomTriage: React.FC = () => {
                 <MessageSquare className="w-4 h-4" />
                 {t.triage.bookConsultBtn}
               </button>
-            </div>
+            </SlideIn>
 
           </div>
         </div>

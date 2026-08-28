@@ -1,8 +1,7 @@
-"use client";
-
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 import { NeoLogo } from "@/components/common/NeoLogo";
 import { WhatsAppModal } from "@/components/common/WhatsAppModal";
 import { useLanguage } from "@/context/LanguageContext";
@@ -62,7 +61,12 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-40 transition-all duration-300">
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="fixed top-0 left-0 right-0 z-40 transition-all duration-300"
+      >
         {/* Top Contact & Hours Bar (Brought to the top as requested) */}
         <div className="bg-neo-navy text-white text-xs py-2 px-4 sm:px-6 lg:px-8 border-b border-white/10 hidden md:block">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -257,59 +261,67 @@ export const Navbar: React.FC = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation Drawer */}
-        {isMobileMenuOpen && (
-          <div className="lg:hidden bg-white/98 backdrop-blur-xl border-b border-neo-clinical/20 shadow-2xl px-6 py-6 animate-fade-in">
-            <nav className="flex flex-col space-y-3">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={`text-base font-bold py-2 px-3 rounded-xl transition-colors ${
-                    pathname === link.href
-                      ? "bg-neo-ice text-neo-red"
-                      : "text-neo-navy hover:bg-slate-50"
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              ))}
+        {/* Mobile Navigation Drawer with AnimatePresence */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="lg:hidden bg-white/98 backdrop-blur-xl border-b border-neo-clinical/20 shadow-2xl px-6 py-6 overflow-hidden"
+            >
+              <nav className="flex flex-col space-y-3">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className={`text-base font-bold py-2 px-3 rounded-xl transition-colors ${
+                      pathname === link.href
+                        ? "bg-neo-ice text-neo-red"
+                        : "text-neo-navy hover:bg-slate-50"
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
 
-              <div className="pt-4 border-t border-slate-100 space-y-2.5">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
-                    setIsModalOpen(true);
-                  }}
-                  className="w-full py-3.5 px-4 rounded-xl bg-neo-red hover:bg-neo-red-hover text-white font-bold text-sm shadow-md flex items-center justify-center gap-2"
-                >
-                  <Calendar className="w-4 h-4 fill-white" />
-                  <span>{t.nav.bookAppointment}</span>
-                </button>
+                <div className="pt-4 border-t border-slate-100 space-y-2.5">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      setIsModalOpen(true);
+                    }}
+                    className="w-full py-3.5 px-4 rounded-xl bg-neo-red hover:bg-neo-red-hover text-white font-bold text-sm shadow-md flex items-center justify-center gap-2"
+                  >
+                    <Calendar className="w-4 h-4 fill-white" />
+                    <span>{t.nav.bookAppointment}</span>
+                  </button>
 
-                <a
-                  href={`https://wa.me/${CLINIC_CONFIG.contact.whatsAppDigits}?text=Hello%20NeoDental%20Clinic,%20I%20would%20like%20to%20inquire%20about%20a%20dental%20visit.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-3.5 px-4 rounded-xl bg-emerald-50 text-emerald-800 font-bold text-sm border border-emerald-200 flex items-center justify-center gap-2"
-                >
-                  <MessageSquare className="w-4 h-4 text-emerald-600" />
-                  <span>WhatsApp: {CLINIC_CONFIG.contact.primaryPhone}</span>
-                </a>
+                  <a
+                    href={`https://wa.me/${CLINIC_CONFIG.contact.whatsAppDigits}?text=Hello%20NeoDental%20Clinic,%20I%20would%20like%20to%20inquire%20about%20a%20dental%20visit.`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-3.5 px-4 rounded-xl bg-emerald-50 text-emerald-800 font-bold text-sm border border-emerald-200 flex items-center justify-center gap-2"
+                  >
+                    <MessageSquare className="w-4 h-4 text-emerald-600" />
+                    <span>WhatsApp: {CLINIC_CONFIG.contact.primaryPhone}</span>
+                  </a>
 
-                <a
-                  href={`tel:${CLINIC_CONFIG.contact.primaryPhoneTel}`}
-                  className="w-full py-3 px-4 rounded-xl bg-neo-ice text-neo-navy font-bold text-xs flex items-center justify-center gap-2"
-                >
-                  <Phone className="w-4 h-4 text-neo-clinical" />
-                  <span>Call {CLINIC_CONFIG.contact.primaryPhone}</span>
-                </a>
-              </div>
-            </nav>
-          </div>
-        )}
-      </header>
+                  <a
+                    href={`tel:${CLINIC_CONFIG.contact.primaryPhoneTel}`}
+                    className="w-full py-3 px-4 rounded-xl bg-neo-ice text-neo-navy font-bold text-xs flex items-center justify-center gap-2"
+                  >
+                    <Phone className="w-4 h-4 text-neo-clinical" />
+                    <span>Call {CLINIC_CONFIG.contact.primaryPhone}</span>
+                  </a>
+                </div>
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.header>
 
       <WhatsAppModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
