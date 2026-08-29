@@ -55,13 +55,16 @@ export const HeroSection: React.FC = () => {
               {t.hero.subtitle}
             </motion.p>
 
-            {/* Trust stats — horizontal on sm+, text only */}
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row sm:flex-wrap gap-4 sm:gap-6 py-2">
-              <div className="text-sm font-bold text-slate-700">
-                ✓ {t.nav.dentalLab} (Eastleigh)
+            {/* Trust badges — clear problem-solving highlights */}
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row sm:flex-wrap gap-2.5 sm:gap-4 py-2">
+              <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-slate-700 bg-sky-50/70 border border-sky-100/80 px-3 py-1.5 rounded-full">
+                <span className="text-sky-600">✓</span> {t.hero.trust1}
               </div>
-              <div className="text-sm font-bold text-slate-700">
-                ✓ {t.contact.hours}
+              <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-slate-700 bg-sky-50/70 border border-sky-100/80 px-3 py-1.5 rounded-full">
+                <span className="text-sky-600">✓</span> {t.hero.trust2}
+              </div>
+              <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-slate-700 bg-sky-50/70 border border-sky-100/80 px-3 py-1.5 rounded-full">
+                <span className="text-sky-600">✓</span> {t.hero.trust3}
               </div>
             </motion.div>
 

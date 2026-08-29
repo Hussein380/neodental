@@ -232,11 +232,11 @@ export const DiseaseCarousel3D: React.FC = () => {
                   ) : (
                     <div className="flex-1 overflow-y-auto pr-1 py-1 space-y-3 text-xs sm:text-sm text-slate-600">
                       <div className="space-y-1">
-                        <span className="font-bold text-slate-800 block uppercase tracking-wider text-[10px]">What to look for (Symptoms):</span>
+                        <span className="font-bold text-slate-800 block uppercase tracking-wider text-[10px]">{t.triage.symptomsLabel}:</span>
                         <p className="leading-relaxed">{card.symptoms}</p>
                       </div>
                       <div className="space-y-1 pt-2 border-t border-slate-100">
-                        <span className="font-bold text-red-600 block uppercase tracking-wider text-[10px]">How NeoDental Treats It:</span>
+                        <span className="font-bold text-red-600 block uppercase tracking-wider text-[10px]">{t.triage.treatmentLabel}:</span>
                         <p className="leading-relaxed">{card.treatment}</p>
                       </div>
                     </div>

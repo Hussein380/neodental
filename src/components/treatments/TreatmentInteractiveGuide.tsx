@@ -2,32 +2,23 @@
 
 import React, { useState, useRef } from "react";
 import Image from "next/image";
-import { RootCanalViewer } from "@/components/3d/RootCanalViewer";
-import { DecayStageViewer } from "@/components/3d/DecayStageViewer";
-import { ImplantViewer } from "@/components/3d/ImplantViewer";
-import { DentalLabViewer } from "@/components/3d/DentalLabViewer";
-import { InteractiveTooth } from "@/components/3d/InteractiveTooth";
 import {
   Play,
   Pause,
   Volume2,
   VolumeX,
   Sparkles,
-  Eye,
-  Layers,
   ShieldCheck,
-  Zap,
   CheckCircle2,
   Maximize,
   Clapperboard,
-  RotateCcw,
 } from "lucide-react";
 
 interface TreatmentInteractiveGuideProps {
   slug: string;
   title: string;
   category: string;
-  interactiveModelType?: "anatomy" | "decay" | "root-canal" | "implant" | "crown" | "lab";
+  interactiveModelType?: string;
 }
 
 export const TreatmentInteractiveGuide: React.FC<TreatmentInteractiveGuideProps> = ({
@@ -246,214 +237,157 @@ export const TreatmentInteractiveGuide: React.FC<TreatmentInteractiveGuideProps>
     }
   };
 
-  const render3DViewer = () => {
-    switch (interactiveModelType) {
-      case "root-canal":
-        return <RootCanalViewer />;
-      case "decay":
-        return <DecayStageViewer />;
-      case "implant":
-        return <ImplantViewer />;
-      case "lab":
-      case "crown":
-        return <DentalLabViewer />;
-      case "anatomy":
-      default:
-        return <InteractiveTooth />;
-    }
-  };
-
   return (
     <section className="space-y-6">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-100 text-neo-red text-xs font-bold uppercase tracking-wider mb-2">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Visual Procedure & Anatomy Explorer</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
-            Watch the Procedure & Clinical Breakdown
-          </h2>
-          <p className="text-xs sm:text-sm text-slate-500 mt-1">
-            See the real procedure motion video, high-resolution anatomical illustration, and interactive 3D model.
-          </p>
+      <div>
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-100 text-neo-red text-xs font-bold uppercase tracking-wider mb-2">
+          <Sparkles className="w-3.5 h-3.5" />
+          <span>Real Clinical Procedure & Anatomy Guide</span>
         </div>
-
-        {/* View Switcher: Media Showcase vs 3D Model */}
-        <div className="inline-flex p-1 rounded-2xl bg-slate-100 border border-slate-200 self-start sm:self-auto">
-          <button
-            type="button"
-            onClick={() => setActiveTab("media")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-              activeTab === "media"
-                ? "bg-white text-neo-navy shadow-sm"
-                : "text-slate-600 hover:text-neo-navy"
-            }`}
-          >
-            <Clapperboard className="w-4 h-4 text-neo-red" />
-            <span>Video & Clinical Image</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setActiveTab("3d")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-              activeTab === "3d"
-                ? "bg-white text-neo-navy shadow-sm"
-                : "text-slate-600 hover:text-neo-navy"
-            }`}
-          >
-            <Layers className="w-4 h-4 text-neo-clinical" />
-            <span>3D Model</span>
-          </button>
-        </div>
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-sky-700">
+          Watch the Procedure & Clinical Breakdown
+        </h2>
+        <p className="text-xs sm:text-sm text-slate-500 mt-1">
+          See the authentic procedure motion video, high-resolution anatomical cross-section, and key clinical steps.
+        </p>
       </div>
 
       {/* Main Container */}
-      <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden p-6 sm:p-8">
-        {activeTab === "media" ? (
-          <div className="space-y-8">
-            {/* Split Media Grid: Full Video + Clinical Cross-Section Image */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-              
-              {/* 1. Full Video Player (if available) or Featured Media */}
-              {videoData ? (
-                <div
-                  ref={videoContainerRef}
-                  className="lg:col-span-6 relative rounded-2xl overflow-hidden bg-slate-950 border border-slate-200 shadow-md min-h-[340px] sm:min-h-[420px] flex flex-col justify-between group transform-gpu will-change-transform"
-                >
-                  <video
-                    ref={videoRef}
-                    src={videoData.video}
-                    autoPlay
-                    loop
-                    muted={isMuted}
-                    playsInline
-                    preload="metadata"
-                    onPlay={() => setIsPlaying(true)}
-                    onPause={() => setIsPlaying(false)}
-                    onEnded={(e) => {
-                      e.currentTarget.currentTime = 0;
-                      e.currentTarget.play().catch(() => {});
-                    }}
-                    className="w-full h-full object-cover absolute inset-0 transform-gpu"
-                  />
+      <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden p-6 sm:p-8 space-y-8">
+        {/* Split Media Grid: Full Video + Clinical Cross-Section Image */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          
+          {/* 1. Full Video Player (if available) */}
+          {videoData ? (
+            <div
+              ref={videoContainerRef}
+              className="lg:col-span-6 relative rounded-2xl overflow-hidden bg-slate-950 border border-slate-200 shadow-md min-h-[340px] sm:min-h-[420px] flex flex-col justify-between group transform-gpu will-change-transform"
+            >
+              <video
+                ref={videoRef}
+                src={videoData.video}
+                autoPlay
+                loop
+                muted={isMuted}
+                playsInline
+                preload="metadata"
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+                onEnded={(e) => {
+                  e.currentTarget.currentTime = 0;
+                  e.currentTarget.play().catch(() => {});
+                }}
+                className="w-full h-full object-cover absolute inset-0 transform-gpu"
+              />
 
-                  {/* Gradient Overlay for controls */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-black/25 pointer-events-none" />
+              {/* Gradient Overlay for controls */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-black/25 pointer-events-none" />
 
-                  {/* Top Bar with Badges & Sound Controller */}
-                  <div className="relative z-10 p-4 flex items-center justify-between pointer-events-auto">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-600 text-white text-[10px] sm:text-xs font-extrabold uppercase tracking-wider shadow-sm">
-                      <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                      <span>Full Procedure Video</span>
-                    </span>
+              {/* Top Bar with Badges & Sound Controller */}
+              <div className="relative z-10 p-4 flex items-center justify-between pointer-events-auto">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-600 text-white text-[10px] sm:text-xs font-extrabold uppercase tracking-wider shadow-sm">
+                  <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                  <span>Full Procedure Video</span>
+                </span>
 
-                    <div className="flex items-center gap-2">
-                      <button
-                        type="button"
-                        onClick={toggleMute}
-                        className="w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center transition-colors backdrop-blur-md"
-                        aria-label={isMuted ? "Unmute audio" : "Mute audio"}
-                      >
-                        {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-                      </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={toggleMute}
+                    className="w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center transition-colors backdrop-blur-md"
+                    aria-label={isMuted ? "Unmute audio" : "Mute audio"}
+                  >
+                    {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                  </button>
 
-                      <button
-                        type="button"
-                        onClick={handleFullscreen}
-                        className="w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center transition-colors backdrop-blur-md"
-                        aria-label="Fullscreen"
-                      >
-                        <Maximize className="w-4 h-4" />
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Bottom Video Controller Info Bar */}
-                  <div className="relative z-10 p-4 flex items-center justify-between text-white pointer-events-auto">
-                    <div className="pr-4">
-                      <h4 className="text-sm sm:text-base font-bold text-white leading-tight">
-                        {videoData.title}
-                      </h4>
-                      <p className="text-[11px] text-slate-300 line-clamp-1 mt-0.5">
-                        {videoData.subtitle}
-                      </p>
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={togglePlay}
-                      className="w-10 h-10 rounded-2xl bg-white/20 hover:bg-white/30 backdrop-blur-md text-white flex items-center justify-center transition-all flex-shrink-0 active:scale-95 shadow-sm"
-                      aria-label={isPlaying ? "Pause video" : "Play video"}
-                    >
-                      {isPlaying ? <Pause className="w-5 h-5 fill-white" /> : <Play className="w-5 h-5 fill-white ml-0.5" />}
-                    </button>
-                  </div>
-                </div>
-              ) : null}
-
-              {/* 2. High-Definition Clinical Illustration Card */}
-              <div
-                className={`${
-                  videoData ? "lg:col-span-6" : "lg:col-span-12"
-                } relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 shadow-md min-h-[340px] sm:min-h-[420px] flex flex-col justify-end group`}
-              >
-                <Image
-                  src={procedureData.image}
-                  alt={procedureData.title}
-                  fill
-                  priority
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-black/20 pointer-events-none" />
-
-                <div className="relative z-10 p-5 text-white">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider bg-slate-900/80 backdrop-blur-md px-2.5 py-1 rounded-md inline-block mb-1.5 border border-white/15">
-                    Clinical Cross-Section & Details
-                  </span>
-                  <h4 className="text-base sm:text-lg font-bold text-white leading-tight">
-                    {procedureData.title}
-                  </h4>
-                  <p className="text-xs text-slate-200 line-clamp-1 mt-0.5">
-                    {procedureData.subtitle}
-                  </p>
+                  <button
+                    type="button"
+                    onClick={handleFullscreen}
+                    className="w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center transition-colors backdrop-blur-md"
+                    aria-label="Fullscreen"
+                  >
+                    <Maximize className="w-4 h-4" />
+                  </button>
                 </div>
               </div>
 
-            </div>
-
-            {/* Clinical Highlights & Safety Guarantee */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
-              {(videoData?.callouts || procedureData.callouts).map((point, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-start gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-200/80 text-left"
-                >
-                  <div className="w-7 h-7 rounded-xl bg-red-100 text-neo-red flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <CheckCircle2 className="w-4 h-4" />
-                  </div>
-                  <p className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">
-                    {point}
+              {/* Bottom Video Controller Info Bar */}
+              <div className="relative z-10 p-4 flex items-center justify-between text-white pointer-events-auto">
+                <div className="pr-4">
+                  <h4 className="text-sm sm:text-base font-bold text-white leading-tight">
+                    {videoData.title}
+                  </h4>
+                  <p className="text-[11px] text-slate-300 line-clamp-1 mt-0.5">
+                    {videoData.subtitle}
                   </p>
                 </div>
-              ))}
-            </div>
 
-            <div className="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-100 text-xs text-emerald-950 flex items-center gap-3 text-left">
-              <ShieldCheck className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-              <span>
-                <strong>Compassionate Clinical Guarantee:</strong> All treatments are performed with modern local numbing and patient-first comfort protocols.
+                <button
+                  type="button"
+                  onClick={togglePlay}
+                  className="w-10 h-10 rounded-2xl bg-white/20 hover:bg-white/30 backdrop-blur-md text-white flex items-center justify-center transition-all flex-shrink-0 active:scale-95 shadow-sm"
+                  aria-label={isPlaying ? "Pause video" : "Play video"}
+                >
+                  {isPlaying ? <Pause className="w-5 h-5 fill-white" /> : <Play className="w-5 h-5 fill-white ml-0.5" />}
+                </button>
+              </div>
+            </div>
+          ) : null}
+
+          {/* 2. High-Definition Clinical Illustration Card */}
+          <div
+            className={`${
+              videoData ? "lg:col-span-6" : "lg:col-span-12"
+            } relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 shadow-md min-h-[340px] sm:min-h-[420px] flex flex-col justify-end group`}
+          >
+            <Image
+              src={procedureData.image}
+              alt={procedureData.title}
+              fill
+              priority
+              className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-black/20 pointer-events-none" />
+
+            <div className="relative z-10 p-5 text-white">
+              <span className="text-[10px] font-extrabold uppercase tracking-wider bg-slate-900/80 backdrop-blur-md px-2.5 py-1 rounded-md inline-block mb-1.5 border border-white/15">
+                Clinical Cross-Section & Details
               </span>
+              <h4 className="text-base sm:text-lg font-bold text-white leading-tight">
+                {procedureData.title}
+              </h4>
+              <p className="text-xs text-slate-200 line-clamp-1 mt-0.5">
+                {procedureData.subtitle}
+              </p>
             </div>
           </div>
-        ) : (
-          /* 3D Interactive Model Tab */
-          <div className="w-full min-h-[480px]">
-            {render3DViewer()}
-          </div>
-        )}
+
+        </div>
+
+        {/* Clinical Highlights & Safety Guarantee */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+          {(videoData?.callouts || procedureData.callouts).map((point, idx) => (
+            <div
+              key={idx}
+              className="flex items-start gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-200/80 text-left"
+            >
+              <div className="w-7 h-7 rounded-xl bg-red-100 text-neo-red flex items-center justify-center flex-shrink-0 mt-0.5">
+                <CheckCircle2 className="w-4 h-4" />
+              </div>
+              <p className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">
+                {point}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div className="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-100 text-xs text-emerald-950 flex items-center gap-3 text-left">
+          <ShieldCheck className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+          <span>
+            <strong>Compassionate Clinical Guarantee:</strong> All treatments are performed with modern local numbing and patient-first comfort protocols.
+          </span>
+        </div>
       </div>
     </section>
   );
