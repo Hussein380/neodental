@@ -151,7 +151,22 @@ export default function RootLayout({
       "Endodontics",
       "Prosthodontics",
       "Orthodontics",
+      "Cosmetic Dentistry",
+      "Dental Laboratory",
     ],
+    currenciesAccepted: "KES, USD",
+    paymentAccepted: "Cash, M-Pesa, Credit Card, Debit Card",
+    hasMap: CLINIC_CONFIG.location.googleMapsLink,
+    areaServed: [
+      { "@type": "AdministrativeArea", name: "Eastleigh" },
+      { "@type": "AdministrativeArea", name: "Nairobi" },
+      { "@type": "AdministrativeArea", name: "Kamukunji" },
+      { "@type": "AdministrativeArea", name: "Pangani" },
+      { "@type": "AdministrativeArea", name: "Ngara" },
+      { "@type": "Country", name: "Kenya" },
+    ],
+    availableLanguage: ["English", "Swahili", "Somali"],
+    isAcceptingNewPatients: true,
   };
 
   return (

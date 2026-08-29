@@ -32,13 +32,34 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = educationalArticles.find((a) => a.slug === params.slug);
   if (!article) return { title: "Article Not Found" };
 
+  const url = `https://neodentals.com/learn/${article.slug}`;
+
   return {
     title: article.seoTitle,
     description: article.seoDescription,
+    alternates: {
+      canonical: url,
+    },
     openGraph: {
       title: article.seoTitle,
       description: article.seoDescription,
-      url: `https://neodentals.com/learn/${article.slug}`,
+      url,
+      siteName: "NeoDental Clinic",
+      locale: "en_KE",
+      type: "article",
+      images: [
+        {
+          url: "https://neodentals.com/logo.png",
+          width: 800,
+          height: 600,
+          alt: `${article.title} - NeoDental Clinic Eastleigh`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.seoTitle,
+      description: article.seoDescription,
     },
   };
 }
@@ -50,8 +71,70 @@ export default function EducationalArticlePage({ params }: Props) {
     notFound();
   }
 
+  // Structured Data 1: MedicalScholarlyArticle / Article Schema
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "MedicalScholarlyArticle",
+    headline: article.title,
+    description: article.summary,
+    image: "https://neodentals.com/logo.png",
+    author: {
+      "@type": "Organization",
+      name: "NeoDental Clinic",
+      url: "https://neodentals.com",
+    },
+    publisher: {
+      "@type": "Dentist",
+      name: "NeoDental Clinic",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://neodentals.com/logo.png",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://neodentals.com/learn/${article.slug}`,
+    },
+  };
+
+  // Structured Data 2: BreadcrumbList Schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://neodentals.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Learn",
+        item: "https://neodentals.com/learn",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: article.title,
+        item: `https://neodentals.com/learn/${article.slug}`,
+      },
+    ],
+  };
+
   return (
     <div className="pt-32 pb-24 bg-white">
+      {/* Inject Google SEO Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+
       {/* Breadcrumbs */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
         <Link

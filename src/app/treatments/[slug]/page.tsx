@@ -35,13 +35,34 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const treatment = treatmentsData.find((t) => t.slug === params.slug);
   if (!treatment) return { title: "Treatment Not Found" };
 
+  const url = `https://neodentals.com/treatments/${treatment.slug}`;
+
   return {
     title: treatment.seoTitle,
     description: treatment.seoDescription,
+    alternates: {
+      canonical: url,
+    },
     openGraph: {
       title: treatment.seoTitle,
       description: treatment.seoDescription,
-      url: `https://neodentals.com/treatments/${treatment.slug}`,
+      url,
+      siteName: "NeoDental Clinic",
+      locale: "en_KE",
+      type: "article",
+      images: [
+        {
+          url: "https://neodentals.com/logo.png",
+          width: 800,
+          height: 600,
+          alt: `${treatment.title} - NeoDental Clinic Eastleigh`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: treatment.seoTitle,
+      description: treatment.seoDescription,
     },
   };
 }
@@ -53,8 +74,86 @@ export default function TreatmentDetailPage({ params }: Props) {
     notFound();
   }
 
+  // Structured Data 1: MedicalProcedure Schema
+  const procedureSchema = {
+    "@context": "https://schema.org",
+    "@type": "MedicalProcedure",
+    name: treatment.title,
+    description: treatment.fullDescription,
+    bodyLocation: "Teeth, Gums, Oral Cavity",
+    procedureType: "NoninvasiveProcedure",
+    howPerformed: treatment.processSteps.map((s) => `${s.step}. ${s.title}: ${s.description}`).join(" "),
+    provider: {
+      "@type": "Dentist",
+      name: "NeoDental Clinic",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "14th Street, 1st Avenue, Eastleigh",
+        addressLocality: "Eastleigh",
+        addressRegion: "Nairobi",
+        addressCountry: "KE",
+      },
+      telephone: "+254729884108",
+      url: "https://neodentals.com",
+    },
+  };
+
+  // Structured Data 2: FAQPage Schema for Google Rich Snippets
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: treatment.faq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+
+  // Structured Data 3: BreadcrumbList Schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://neodentals.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Treatments",
+        item: "https://neodentals.com/treatments",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: treatment.title,
+        item: `https://neodentals.com/treatments/${treatment.slug}`,
+      },
+    ],
+  };
+
   return (
     <div className="pt-32 pb-24 bg-white">
+      {/* Inject Google SEO Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(procedureSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+
       {/* Breadcrumb Navigation */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
         <Link
