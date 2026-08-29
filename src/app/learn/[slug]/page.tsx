@@ -56,6 +56,7 @@ export default function EducationalArticlePage({ params }: Props) {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
         <Link
           href="/learn"
+          prefetch={true}
           className="inline-flex items-center gap-2 text-sm font-bold text-neo-blue-gray hover:text-neo-red transition-colors"
         >
           <ChevronLeft className="w-4 h-4" />

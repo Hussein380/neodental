@@ -81,6 +81,7 @@ export const HeroSection: React.FC = () => {
 
               <Link
                 href="/treatments"
+                prefetch={true}
                 className="group inline-flex items-center justify-center gap-2 py-4 px-7 rounded-full bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-bold text-sm transition-all duration-200 shadow-sm"
               >
                 {t.hero.exploreBtn}

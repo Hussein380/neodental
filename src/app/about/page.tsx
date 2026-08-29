@@ -204,6 +204,7 @@ export default function AboutPage() {
             </button>
             <Link
               href="/contact"
+              prefetch={true}
               className="py-3 px-6 rounded-full bg-neo-ice hover:bg-slate-200 text-neo-navy text-xs font-bold transition-all flex items-center gap-2"
             >
               <span>View Map & Directions</span>

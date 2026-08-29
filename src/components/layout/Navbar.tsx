@@ -135,6 +135,7 @@ export const Navbar: React.FC = () => {
                     >
                       <Link
                         href={link.href}
+                        prefetch={true}
                         className={`inline-flex items-center gap-1 text-sm font-bold transition-colors py-2 ${
                           pathname.startsWith("/treatments")
                             ? "text-sky-600"
@@ -164,6 +165,7 @@ export const Navbar: React.FC = () => {
                             <Link
                               key={cat.id}
                               href={`/treatments#${cat.id}`}
+                              prefetch={true}
                               className="px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-600 transition-all flex items-center justify-between"
                             >
                               <span>{cat.name}</span>
@@ -184,6 +186,7 @@ export const Navbar: React.FC = () => {
                   <Link
                     key={link.name}
                     href={link.href}
+                    prefetch={true}
                     className={`text-sm font-bold transition-colors py-2 ${
                       isActive
                         ? "text-sky-600"
@@ -280,6 +283,7 @@ export const Navbar: React.FC = () => {
                   <Link
                     key={link.name}
                     href={link.href}
+                    prefetch={true}
                     className={`text-base font-bold py-2.5 px-3.5 rounded-xl transition-colors ${
                       pathname === link.href
                         ? "bg-sky-50 text-sky-600 font-bold"

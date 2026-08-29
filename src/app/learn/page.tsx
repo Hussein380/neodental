@@ -106,6 +106,7 @@ export default function LearnHubPage() {
               <div className="pt-4 border-t border-slate-200/80 flex items-center justify-between">
                 <Link
                   href={`/learn/${article.slug}`}
+                  prefetch={true}
                   className="text-xs font-bold text-neo-navy hover:text-neo-red flex items-center gap-1 transition-colors"
                 >
                   <span>Read Full Article</span>

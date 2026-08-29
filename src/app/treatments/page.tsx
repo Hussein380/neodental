@@ -505,9 +505,10 @@ export default function TreatmentsHubPage() {
                   <div className="px-6 pb-6 pt-2 flex items-center justify-between gap-3 border-t border-slate-100 mt-2">
                     <Link
                       href={`/treatments/${treatment.slug}`}
+                      prefetch={true}
                       className="text-xs font-bold text-slate-800 hover:text-neo-red flex items-center gap-1.5 transition-colors group/link py-2"
                     >
-                      <span>{meta.hasVideo ? "Watch Video & Guide" : "Explore Procedure & 3D"}</span>
+                      <span>{meta.hasVideo ? "Watch Video & Guide" : "Explore Full Guide"}</span>
                       <ArrowRight className="w-3.5 h-3.5 text-neo-red transition-transform group-hover/link:translate-x-0.5" />
                     </Link>
 
@@ -566,6 +567,7 @@ export default function TreatmentsHubPage() {
           <div className="flex flex-col sm:flex-row lg:flex-col gap-3 w-full sm:w-auto flex-shrink-0">
             <Link
               href="/lab"
+              prefetch={true}
               className="inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-neo-navy hover:bg-neo-navy-light text-white font-bold text-xs shadow-md transition-colors"
             >
               <span>Explore In-House Dental Lab</span>

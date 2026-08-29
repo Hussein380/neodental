@@ -65,27 +65,27 @@ export const Footer: React.FC = () => {
               </h4>
               <ul className="space-y-2 text-sm text-sky-100">
                 <li>
-                  <Link href="/" className="hover:text-white transition-colors">
+                  <Link href="/" prefetch={true} className="hover:text-white transition-colors">
                     {t.nav.home}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/treatments" className="hover:text-white transition-colors">
+                  <Link href="/treatments" prefetch={true} className="hover:text-white transition-colors">
                     {t.nav.treatments}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/lab" className="hover:text-white transition-colors">
+                  <Link href="/lab" prefetch={true} className="hover:text-white transition-colors">
                     {t.nav.dentalLab}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about" className="hover:text-white transition-colors">
+                  <Link href="/about" prefetch={true} className="hover:text-white transition-colors">
                     {t.nav.about}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="hover:text-white transition-colors">
+                  <Link href="/contact" prefetch={true} className="hover:text-white transition-colors">
                     {t.nav.contact}
                   </Link>
                 </li>
@@ -102,6 +102,7 @@ export const Footer: React.FC = () => {
                   <li key={cat.id}>
                     <Link
                       href={`/treatments#${cat.id}`}
+                      prefetch={true}
                       className="hover:text-white transition-colors flex items-center gap-1.5"
                     >
                       <span className="w-1.5 h-1.5 rounded-full bg-neo-red" />

@@ -118,6 +118,7 @@ export const DentalLabFeature: React.FC = () => {
 
                 <Link
                   href="/lab"
+                  prefetch={true}
                   className="text-xs sm:text-sm font-bold text-slate-800 hover:text-neo-red flex items-center gap-1.5 transition-colors"
                 >
                   <span>Read Full Lab Guide</span>
