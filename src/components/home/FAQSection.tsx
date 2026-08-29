@@ -71,18 +71,18 @@ export const FAQSection: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => toggleFAQ(index)}
-                  className="w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-neo-navy hover:text-neo-red transition-colors text-base sm:text-lg"
+                  className="w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-sky-700 hover:text-neo-red transition-colors text-base sm:text-lg"
                 >
                   <span>{faq.question}</span>
                   <ChevronDown
-                    className={`w-5 h-5 text-neo-clinical flex-shrink-0 transition-transform duration-200 ${
+                    className={`w-5 h-5 text-sky-600 flex-shrink-0 transition-transform duration-200 ${
                       isOpen ? "rotate-180 text-neo-red" : ""
                     }`}
                   />
                 </button>
 
                 {isOpen && (
-                  <div className="px-6 pb-6 pt-1 text-sm sm:text-base text-neo-muted leading-relaxed border-t border-slate-100 animate-fade-in font-normal">
+                  <div className="px-6 pb-6 pt-1 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-slate-100 animate-fade-in font-normal">
                     {faq.answer}
                   </div>
                 )}

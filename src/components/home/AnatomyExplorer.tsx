@@ -73,7 +73,7 @@ export const AnatomyExplorer: React.FC = () => {
               <div className="flex items-center justify-between gap-2 border-b border-slate-100 pb-3.5">
                 <div className="flex items-center gap-2.5">
                   <span className="w-3 h-3 rounded-full bg-neo-red" />
-                  <h3 className="text-xl font-extrabold text-neo-navy">
+                  <h3 className="text-xl font-extrabold text-sky-700">
                     {selectedHotspot.name}
                   </h3>
                 </div>

@@ -34,18 +34,18 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
         <div
           className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4 ${
             isDark
-              ? "bg-white/10 text-neo-clinical-light border border-white/15"
-              : "bg-neo-ice text-neo-navy border border-neo-clinical/20 shadow-xs"
+              ? "bg-white/10 text-sky-200 border border-white/15"
+              : "bg-sky-50 text-sky-700 border border-sky-200/80 shadow-xs"
           }`}
         >
-          <span className="w-2 h-2 rounded-full bg-neo-red" />
+          <span className="w-2 h-2 rounded-full bg-neo-red animate-pulse" />
           <span>{badge}</span>
         </div>
       )}
 
       <h2
         className={`text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem] font-extrabold tracking-tight leading-[1.22] ${
-          isDark ? "text-white" : "text-neo-navy"
+          isDark ? "text-white" : "text-sky-700"
         }`}
       >
         {title}{" "}
@@ -59,7 +59,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
       {subtitle && (
         <p
           className={`mt-4 text-base sm:text-lg leading-relaxed font-normal ${
-            isDark ? "text-slate-300" : "text-neo-muted"
+            isDark ? "text-slate-300" : "text-slate-600"
           }`}
         >
           {subtitle}

@@ -193,8 +193,8 @@ export default function DentalLabPage() {
                 </p>
                 <p className="text-slate-400 text-[11px] mt-0.5">Dental Lab · Precision Fabrication Process</p>
               </div>
-              <span className="shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-600/20 border border-amber-500/30 text-amber-400 text-[10px] font-bold uppercase tracking-wider">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+              <span className="shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sky-600/20 border border-sky-500/30 text-sky-400 text-[10px] font-bold uppercase tracking-wider">
+                <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse" />
                 Education
               </span>
             </div>
@@ -202,16 +202,16 @@ export default function DentalLabPage() {
 
           {/* RIGHT — description */}
           <div className="space-y-5">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-100">
-              <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse flex-shrink-0" />
-              <span className="text-[11px] sm:text-xs font-bold text-amber-700 tracking-wide uppercase">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-100">
+              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse flex-shrink-0" />
+              <span className="text-[11px] sm:text-xs font-bold text-sky-700 tracking-wide uppercase">
                 Lab Restorations
               </span>
             </div>
 
             <h3 className="text-2xl sm:text-3xl font-extrabold text-neo-navy leading-tight">
               Precision-Crafted{" "}
-              <span className="text-amber-600">Dental Restorations</span>
+              <span className="text-neo-red">Dental Restorations</span>
             </h3>
 
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
@@ -226,7 +226,7 @@ export default function DentalLabPage() {
                 "Precision ceramic bridges and partial dentures",
               ].map((point) => (
                 <li key={point} className="flex items-start gap-2.5">
-                  <span className="mt-1 w-4 h-4 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center flex-shrink-0 text-[10px] font-extrabold">✓</span>
+                  <span className="mt-1 w-4 h-4 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center flex-shrink-0 text-[10px] font-extrabold">✓</span>
                   <span>{point}</span>
                 </li>
               ))}
@@ -300,40 +300,40 @@ export default function DentalLabPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left mb-16">
           <div className="bg-neo-ice p-7 rounded-3xl border border-neo-clinical/20 space-y-2.5">
             <Sparkles className="w-6 h-6 text-neo-red" />
-            <h3 className="font-extrabold text-neo-navy text-base">
+            <h3 className="font-extrabold text-sky-700 text-base">
               Gold & Silver Crowns
             </h3>
-            <p className="text-xs sm:text-sm text-neo-muted leading-relaxed font-normal">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
               Expert custom crafting of classic Gold and high-durability Silver crowns tailored to individual biting forces.
             </p>
           </div>
 
           <div className="bg-neo-ice p-7 rounded-3xl border border-neo-clinical/20 space-y-2.5">
-            <Cpu className="w-6 h-6 text-neo-clinical" />
-            <h3 className="font-extrabold text-neo-navy text-base">
+            <Cpu className="w-6 h-6 text-sky-600" />
+            <h3 className="font-extrabold text-sky-700 text-base">
               Precision Fit
             </h3>
-            <p className="text-xs sm:text-sm text-neo-muted leading-relaxed font-normal">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
               Exact adaptation along tooth margins to seal out bacteria and prevent micro-leakage.
             </p>
           </div>
 
           <div className="bg-neo-ice p-7 rounded-3xl border border-neo-clinical/20 space-y-2.5">
-            <Zap className="w-6 h-6 text-neo-navy" />
-            <h3 className="font-extrabold text-neo-navy text-base">
+            <Zap className="w-6 h-6 text-sky-600" />
+            <h3 className="font-extrabold text-sky-700 text-base">
               Direct Shade Matching
             </h3>
-            <p className="text-xs sm:text-sm text-neo-muted leading-relaxed font-normal">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
               Technicians evaluate natural tooth color in person for seamless aesthetic harmony.
             </p>
           </div>
 
           <div className="bg-neo-ice p-7 rounded-3xl border border-neo-clinical/20 space-y-2.5">
             <Layers className="w-6 h-6 text-neo-red" />
-            <h3 className="font-extrabold text-neo-navy text-base">
+            <h3 className="font-extrabold text-sky-700 text-base">
               Removable Prosthetics
             </h3>
-            <p className="text-xs sm:text-sm text-neo-muted leading-relaxed font-normal">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
               Custom partial and full dental appliances crafted for natural chewing and facial fullness.
             </p>
           </div>

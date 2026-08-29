@@ -90,11 +90,11 @@ export const PatientJourney: React.FC = () => {
                   </div>
                 </div>
 
-                <h3 className="text-lg font-bold text-neo-navy mb-2.5 leading-snug">
+                <h3 className="text-lg font-bold text-sky-700 group-hover:text-neo-red transition-colors mb-2.5 leading-snug">
                   {item.title}
                 </h3>
 
-                <p className="text-sm text-neo-muted leading-relaxed font-normal">
+                <p className="text-sm text-slate-600 leading-relaxed font-normal">
                   {item.description}
                 </p>
               </div>

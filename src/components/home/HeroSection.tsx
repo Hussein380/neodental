@@ -45,7 +45,7 @@ export const HeroSection: React.FC = () => {
             animate="visible"
           >
             {/* Headline */}
-            <motion.h1 variants={itemVariants} className="text-[2.2rem] sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.1] tracking-tight text-slate-900">
+            <motion.h1 variants={itemVariants} className="text-[2.2rem] sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.1] tracking-tight text-sky-700">
               {t.hero.titleStart}{" "}
               <span className="text-red-600 block sm:inline">{t.hero.titleHighlight}</span>
             </motion.h1>

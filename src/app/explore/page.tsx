@@ -47,7 +47,7 @@ export default function ExplorePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               </div>
               <div className="p-6">
-                <h3 className="text-lg font-extrabold text-neo-navy mb-1 group-hover:text-neo-red transition-colors capitalize">
+                <h3 className="text-lg font-extrabold text-slate-900 mb-1 group-hover:text-neo-red transition-colors capitalize">
                   {label}
                 </h3>
                 <p className="text-xs text-slate-500 leading-relaxed">{tags}</p>

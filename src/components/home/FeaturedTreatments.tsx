@@ -47,12 +47,12 @@ export const FeaturedTreatments: React.FC = () => {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl sm:text-2xl font-extrabold text-neo-navy mb-3 group-hover:text-neo-red transition-colors leading-snug">
+                <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 mb-3 group-hover:text-neo-red transition-colors leading-snug">
                   {treatment.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-sm sm:text-base text-neo-muted leading-relaxed mb-6 font-normal">
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6 font-normal">
                   {treatment.shortDescription}
                 </p>
 

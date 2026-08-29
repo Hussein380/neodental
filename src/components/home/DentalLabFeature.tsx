@@ -94,10 +94,10 @@ export const DentalLabFeature: React.FC = () => {
                       <span className="text-xs font-black text-neo-red font-mono">
                         {s.step}
                       </span>
-                      <h4 className="font-bold text-neo-navy text-sm">
+                      <h4 className="font-bold text-sky-700 text-sm">
                         {s.title}
                       </h4>
-                      <p className="text-xs text-neo-muted leading-relaxed font-normal">
+                      <p className="text-xs text-slate-600 leading-relaxed font-normal">
                         {s.description}
                       </p>
                     </div>
@@ -118,7 +118,7 @@ export const DentalLabFeature: React.FC = () => {
 
                 <Link
                   href="/lab"
-                  className="text-xs sm:text-sm font-bold text-neo-navy hover:text-neo-red flex items-center gap-1.5 transition-colors"
+                  className="text-xs sm:text-sm font-bold text-slate-800 hover:text-neo-red flex items-center gap-1.5 transition-colors"
                 >
                   <span>Read Full Lab Guide</span>
                   <ArrowRight className="w-4 h-4 text-neo-red" />
@@ -131,37 +131,37 @@ export const DentalLabFeature: React.FC = () => {
         {/* 3 Value Proposition Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
           <div className="bg-white p-7 rounded-3xl border border-neo-clinical/20 shadow-subtle space-y-3">
-            <div className="w-11 h-11 rounded-2xl bg-neo-ice flex items-center justify-center text-neo-red mb-4">
+            <div className="w-11 h-11 rounded-2xl bg-sky-50 flex items-center justify-center text-neo-red mb-4">
               <Sparkles className="w-6 h-6" />
             </div>
-            <h4 className="font-extrabold text-neo-navy text-lg">
+            <h4 className="font-extrabold text-sky-700 text-lg">
               Precision Custom Fit
             </h4>
-            <p className="text-sm text-neo-muted leading-relaxed font-normal">
+            <p className="text-sm text-slate-600 leading-relaxed font-normal">
               Every crown, bridge, and removable appliance is crafted specifically for your unique bite and facial symmetry.
             </p>
           </div>
 
           <div className="bg-white p-7 rounded-3xl border border-neo-clinical/20 shadow-subtle space-y-3">
-            <div className="w-11 h-11 rounded-2xl bg-neo-ice flex items-center justify-center text-neo-clinical mb-4">
+            <div className="w-11 h-11 rounded-2xl bg-sky-50 flex items-center justify-center text-sky-600 mb-4">
               <Cpu className="w-6 h-6" />
             </div>
-            <h4 className="font-extrabold text-neo-navy text-lg">
+            <h4 className="font-extrabold text-sky-700 text-lg">
               Direct Technician Collaboration
             </h4>
-            <p className="text-sm text-neo-muted leading-relaxed font-normal">
+            <p className="text-sm text-slate-600 leading-relaxed font-normal">
               Our dental technicians work side-by-side with treating clinicians, allowing instantaneous adjustments and exact shade matching on-site.
             </p>
           </div>
 
           <div className="bg-white p-7 rounded-3xl border border-neo-clinical/20 shadow-subtle space-y-3">
-            <div className="w-11 h-11 rounded-2xl bg-neo-ice flex items-center justify-center text-neo-navy mb-4">
+            <div className="w-11 h-11 rounded-2xl bg-sky-50 flex items-center justify-center text-sky-700 mb-4">
               <ShieldCheck className="w-6 h-6" />
             </div>
-            <h4 className="font-extrabold text-neo-navy text-lg">
+            <h4 className="font-extrabold text-sky-700 text-lg">
               Gold & Silver Crown Expertise
             </h4>
-            <p className="text-sm text-neo-muted leading-relaxed font-normal">
+            <p className="text-sm text-slate-600 leading-relaxed font-normal">
               We provide confirmed high-durability options in classic Gold and Silver crowns, crafted to the highest restorative standards.
             </p>
           </div>

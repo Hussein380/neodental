@@ -117,24 +117,24 @@ export default function TreatmentDetailPage({ params }: Props) {
           {/* Left Column: Full Description */}
           <div className="lg:col-span-7 space-y-6">
             <div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-neo-navy mb-4">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-sky-700 mb-4">
                 Understanding This Dental Treatment
               </h2>
-              <p className="text-base text-neo-dark leading-relaxed font-normal">
+              <p className="text-base text-slate-700 leading-relaxed font-normal">
                 {treatment.fullDescription}
               </p>
             </div>
 
             {/* Key Benefits Card */}
             <div className="bg-neo-ice p-7 rounded-3xl border border-neo-clinical/20 space-y-4">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-neo-navy flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-neo-clinical" />
+              <h3 className="text-sm font-bold uppercase tracking-wider text-sky-700 flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-sky-600" />
                 Key Patient Benefits
               </h3>
               <div className="space-y-2.5">
                 {treatment.benefits.map((benefit, i) => (
-                  <div key={i} className="flex items-start gap-2.5 text-sm text-neo-dark">
-                    <CheckCircle2 className="w-4 h-4 text-neo-success flex-shrink-0 mt-0.5" />
+                  <div key={i} className="flex items-start gap-2.5 text-sm text-slate-800">
+                    <CheckCircle2 className="w-4 h-4 text-sky-600 flex-shrink-0 mt-0.5" />
                     <span>{benefit}</span>
                   </div>
                 ))}
@@ -144,15 +144,15 @@ export default function TreatmentDetailPage({ params }: Props) {
 
           {/* Right Column: Indications Card */}
           <div className="lg:col-span-5 bg-white p-7 rounded-3xl border border-neo-clinical/25 shadow-card space-y-4">
-            <h3 className="text-lg font-bold text-neo-navy border-b border-slate-100 pb-3.5">
+            <h3 className="text-lg font-bold text-sky-700 border-b border-slate-100 pb-3.5">
               When Is This Treatment Indicated?
             </h3>
-            <p className="text-xs text-neo-muted leading-relaxed">
+            <p className="text-xs text-slate-500 leading-relaxed">
               You may benefit from a consultation if you experience any of the following symptoms:
             </p>
             <div className="space-y-3">
               {treatment.symptoms.map((symptom, i) => (
-                <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-neo-dark">
+                <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-800">
                   <span className="w-2 h-2 rounded-full bg-neo-red flex-shrink-0 mt-2" />
                   <span>{symptom}</span>
                 </div>
@@ -164,10 +164,10 @@ export default function TreatmentDetailPage({ params }: Props) {
         {/* Section: Clinical Step-by-Step Pathway */}
         <div className="space-y-8">
           <div className="space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-neo-clinical">
+            <span className="text-xs font-bold uppercase tracking-wider text-sky-600">
               Clinical Protocol
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-neo-navy">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-sky-700">
               What Happens During Your Visit (Step-by-Step)
             </h2>
           </div>
@@ -179,13 +179,13 @@ export default function TreatmentDetailPage({ params }: Props) {
                 className="bg-neo-ice rounded-3xl border border-neo-clinical/20 p-7 flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-9 h-9 rounded-2xl bg-neo-navy text-white text-xs font-bold flex items-center justify-center mb-4 font-mono">
+                  <div className="w-9 h-9 rounded-2xl bg-sky-600 text-white text-xs font-bold flex items-center justify-center mb-4 font-mono">
                     0{step.step}
                   </div>
-                  <h3 className="text-lg font-bold text-neo-navy mb-2.5">
+                  <h3 className="text-lg font-bold text-sky-700 mb-2.5">
                     {step.title}
                   </h3>
-                  <p className="text-sm text-neo-muted leading-relaxed font-normal">
+                  <p className="text-sm text-slate-600 leading-relaxed font-normal">
                     {step.description}
                   </p>
                 </div>
@@ -197,7 +197,7 @@ export default function TreatmentDetailPage({ params }: Props) {
         {/* Section: FAQs */}
         {treatment.faq.length > 0 && (
           <div className="space-y-8">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-neo-navy">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-sky-700">
               Frequently Asked Questions
             </h2>
 
@@ -207,10 +207,10 @@ export default function TreatmentDetailPage({ params }: Props) {
                   key={idx}
                   className="bg-white p-7 rounded-3xl border border-neo-clinical/20 shadow-xs space-y-2.5"
                 >
-                  <h3 className="text-base font-bold text-neo-navy">
+                  <h3 className="text-base font-bold text-sky-700">
                     {item.question}
                   </h3>
-                  <p className="text-sm text-neo-muted leading-relaxed font-normal">
+                  <p className="text-sm text-slate-600 leading-relaxed font-normal">
                     {item.answer}
                   </p>
                 </div>

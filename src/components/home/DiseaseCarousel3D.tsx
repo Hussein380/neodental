@@ -211,7 +211,7 @@ export const DiseaseCarousel3D: React.FC = () => {
                   }}
                 >
                   <div className="flex justify-between items-start mb-1">
-                    <h3 className={`text-[15px] sm:text-lg font-extrabold leading-snug text-slate-900 ${isExpanded ? '' : 'line-clamp-1'}`}>
+                    <h3 className={`text-[15px] sm:text-lg font-extrabold leading-snug text-sky-700 ${isExpanded ? '' : 'line-clamp-1'}`}>
                       {card.title}
                     </h3>
                     {isExpanded && (

@@ -36,14 +36,14 @@ export default function ContactPage() {
             <div className="bg-neo-ice p-6 rounded-2xl border border-neo-clinical/25 shadow-subtle space-y-2">
               <div className="flex items-center gap-2.5 mb-1">
                 <MapPin className="w-5 h-5 text-neo-red" />
-                <h3 className="font-bold text-neo-navy text-base">
+                <h3 className="font-extrabold text-sky-700 text-base">
                   {t.contact.addressTitle}
                 </h3>
               </div>
-              <p className="text-sm font-semibold text-neo-dark">
+              <p className="text-sm font-semibold text-slate-800">
                 NeoDental Clinic
               </p>
-              <p className="text-xs md:text-sm text-neo-muted leading-relaxed">
+              <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
                 {t.contact.address}
               </p>
               <div className="pt-2">
@@ -51,9 +51,9 @@ export default function ContactPage() {
                   href="https://maps.google.com/?q=14th+Street+1st+Avenue+Eastleigh+Nairobi+Kenya"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-neo-navy hover:text-neo-red transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-800 hover:text-neo-red transition-colors"
                 >
-                  <Navigation className="w-3.5 h-3.5 text-neo-clinical" />
+                  <Navigation className="w-3.5 h-3.5 text-sky-600" />
                   <span>Open Directions in Google Maps</span>
                   <ExternalLink className="w-3 h-3 text-slate-400" />
                 </a>
@@ -63,8 +63,8 @@ export default function ContactPage() {
             {/* Phone & WhatsApp Card */}
             <div className="bg-neo-ice p-6 rounded-2xl border border-neo-clinical/25 shadow-subtle space-y-3">
               <div className="flex items-center gap-2.5 mb-1">
-                <Phone className="w-5 h-5 text-neo-clinical" />
-                <h3 className="font-bold text-neo-navy text-base">
+                <Phone className="w-5 h-5 text-sky-600" />
+                <h3 className="font-extrabold text-sky-700 text-base">
                   {t.contact.phoneTitle}
                 </h3>
               </div>
@@ -72,12 +72,12 @@ export default function ContactPage() {
               <div className="space-y-2 text-xs md:text-sm">
                 <div className="flex items-center justify-between p-2.5 rounded-xl bg-white border border-slate-200/80">
                   <div>
-                    <span className="text-[10px] uppercase font-bold text-neo-blue-gray block">
+                    <span className="text-[10px] uppercase font-bold text-slate-500 block">
                       Primary & WhatsApp Line
                     </span>
                     <a
                       href="tel:+254729884108"
-                      className="font-bold text-neo-navy hover:text-neo-red text-sm"
+                      className="font-bold text-sky-700 hover:text-neo-red text-sm"
                     >
                       0729 884 108
                     </a>
@@ -95,19 +95,19 @@ export default function ContactPage() {
 
                 <div className="flex items-center justify-between p-2.5 rounded-xl bg-white border border-slate-200/80">
                   <div>
-                    <span className="text-[10px] uppercase font-bold text-neo-blue-gray block">
+                    <span className="text-[10px] uppercase font-bold text-slate-500 block">
                       Additional Clinic Line
                     </span>
                     <a
                       href="tel:+254721284884"
-                      className="font-bold text-neo-navy hover:text-neo-red text-sm"
+                      className="font-bold text-sky-700 hover:text-neo-red text-sm"
                     >
                       0721 284 884
                     </a>
                   </div>
                   <a
                     href="tel:+254721284884"
-                    className="p-2 rounded-lg bg-neo-ice text-neo-navy hover:bg-slate-200 transition-colors"
+                    className="p-2 rounded-lg bg-sky-50 text-sky-700 hover:bg-sky-100 transition-colors"
                     title="Call"
                   >
                     <Phone className="w-4 h-4" />
@@ -119,15 +119,15 @@ export default function ContactPage() {
             {/* Operating Hours Card */}
             <div className="bg-neo-ice p-6 rounded-2xl border border-neo-clinical/25 shadow-subtle space-y-2">
               <div className="flex items-center gap-2.5 mb-1">
-                <Clock className="w-5 h-5 text-neo-navy" />
-                <h3 className="font-bold text-neo-navy text-base">
+                <Clock className="w-5 h-5 text-sky-600" />
+                <h3 className="font-extrabold text-sky-700 text-base">
                   {t.contact.hoursTitle}
                 </h3>
               </div>
-              <p className="text-sm font-bold text-neo-navy">
+              <p className="text-sm font-bold text-slate-900">
                 {t.contact.hours}
               </p>
-              <p className="text-xs text-neo-muted">
+              <p className="text-xs text-slate-500">
                 {t.contact.holidayNotice}
               </p>
             </div>
@@ -148,7 +148,7 @@ export default function ContactPage() {
             <div className="p-4 bg-neo-ice border-b border-slate-200 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-neo-red" />
-                <span className="text-xs font-bold text-neo-navy">
+                <span className="text-xs font-bold text-sky-700">
                   NeoDental Clinic Location • Eastleigh, Nairobi
                 </span>
               </div>

@@ -70,40 +70,40 @@ export default function EducationalArticlePage({ params }: Props) {
             <span className="text-xs font-bold uppercase tracking-wider text-neo-clinical px-3 py-1 rounded-full bg-neo-ice">
               {article.category}
             </span>
-            <span className="text-xs font-semibold px-3 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200">
+            <span className="text-xs font-semibold px-3 py-1 rounded-full bg-sky-50 text-sky-700 border border-sky-200">
               Review Status: {article.reviewStatus.toUpperCase()}
             </span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-neo-navy tracking-tight leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-sky-700 tracking-tight leading-tight">
             {article.title}
           </h1>
 
-          <p className="text-base sm:text-lg text-neo-muted leading-relaxed font-normal">
+          <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
             {article.summary}
           </p>
         </header>
 
         {/* 2. Main Educational Content Card */}
         <section className="bg-neo-ice/80 p-8 sm:p-10 rounded-3xl border border-neo-clinical/20 space-y-4">
-          <h2 className="text-2xl font-extrabold text-neo-navy">
+          <h2 className="text-2xl font-extrabold text-sky-700">
             Clinical Explanation & Biological Fundamentals
           </h2>
-          <p className="text-base text-neo-dark leading-relaxed font-normal">
+          <p className="text-base text-slate-700 leading-relaxed font-normal">
             {article.content}
           </p>
         </section>
 
         {/* 3. Key Takeaways Card */}
         <section className="bg-white p-8 sm:p-10 rounded-3xl border border-neo-clinical/25 shadow-card space-y-5">
-          <h3 className="text-lg font-bold text-neo-navy flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-neo-clinical" />
+          <h3 className="text-lg font-bold text-sky-700 flex items-center gap-2">
+            <Sparkles className="w-5 h-5 text-sky-600" />
             Key Clinical Points to Remember
           </h3>
           <div className="space-y-3">
             {article.keyPoints.map((point, i) => (
-              <div key={i} className="flex items-start gap-3 text-sm sm:text-base text-neo-dark">
-                <CheckCircle2 className="w-5 h-5 text-neo-success flex-shrink-0 mt-0.5" />
+              <div key={i} className="flex items-start gap-3 text-sm sm:text-base text-slate-800">
+                <CheckCircle2 className="w-5 h-5 text-sky-600 flex-shrink-0 mt-0.5" />
                 <span>{point}</span>
               </div>
             ))}
@@ -112,14 +112,14 @@ export default function EducationalArticlePage({ params }: Props) {
 
         {/* 4. What You Can Do at Home */}
         <section className="bg-neo-ice p-8 sm:p-10 rounded-3xl border border-slate-200/80 space-y-5">
-          <h3 className="text-lg font-bold text-neo-navy flex items-center gap-2">
+          <h3 className="text-lg font-bold text-sky-700 flex items-center gap-2">
             <BookOpen className="w-5 h-5 text-neo-red" />
             Actionable Steps for Daily Oral Care
           </h3>
-          <ul className="space-y-2.5 text-sm sm:text-base text-neo-dark">
+          <ul className="space-y-2.5 text-sm sm:text-base text-slate-700">
             {article.whatToDo.map((step, i) => (
               <li key={i} className="flex items-start gap-2.5">
-                <span className="w-2 h-2 rounded-full bg-neo-clinical flex-shrink-0 mt-2" />
+                <span className="w-2 h-2 rounded-full bg-sky-500 flex-shrink-0 mt-2" />
                 <span>{step}</span>
               </li>
             ))}
@@ -132,7 +132,7 @@ export default function EducationalArticlePage({ params }: Props) {
             <AlertTriangle className="w-5 h-5 text-neo-red" />
             When Should You Visit NeoDental Clinic?
           </h3>
-          <p className="text-sm sm:text-base text-neo-dark font-medium leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-900 font-medium leading-relaxed">
             {article.whenToSeeDentist}
           </p>
         </section>
@@ -140,7 +140,7 @@ export default function EducationalArticlePage({ params }: Props) {
         {/* 6. Appointment Action Strip */}
         <div className="pt-6 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4">
           <div className="space-y-1">
-            <h4 className="text-base font-bold text-neo-navy">
+            <h4 className="text-base font-bold text-sky-700">
               Have questions about this dental condition?
             </h4>
             <p className="text-xs text-neo-muted">

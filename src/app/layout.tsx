@@ -71,9 +71,10 @@ export const metadata: Metadata = {
       },
     ],
   },
+  applicationName: "NeoDental Clinic",
   appleWebApp: {
     capable: true,
-    title: "neodenta",
+    title: "NeoDental",
     statusBarStyle: "default",
   },
   icons: {
@@ -156,7 +157,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${jakarta.variable} ${outfit.variable}`}>
       <head>
-        <meta name="apple-mobile-web-app-title" content="neodenta" />
+        <meta name="apple-mobile-web-app-title" content="NeoDental" />
+        <meta name="application-name" content="NeoDental Clinic" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(clinicSchema) }}

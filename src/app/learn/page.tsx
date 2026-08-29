@@ -76,12 +76,12 @@ export default function LearnHubPage() {
                   <span className="text-[11px] font-bold uppercase tracking-wider text-neo-clinical">
                     {article.category}
                   </span>
-                  <span className="text-[9px] px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 font-semibold border border-amber-200/60">
+                  <span className="text-[9px] px-2 py-0.5 rounded-full bg-sky-50 text-sky-700 font-semibold border border-sky-200/60">
                     Draft • Educational
                   </span>
                 </div>
 
-                <h3 className="text-xl font-bold text-neo-navy mb-3 group-hover:text-neo-red transition-colors leading-snug">
+                <h3 className="text-xl font-extrabold text-sky-700 mb-3 group-hover:text-neo-red transition-colors leading-snug">
                   {article.title}
                 </h3>
 

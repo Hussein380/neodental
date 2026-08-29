@@ -271,7 +271,7 @@ export const TreatmentInteractiveGuide: React.FC<TreatmentInteractiveGuideProps>
             <Sparkles className="w-3.5 h-3.5" />
             <span>Visual Procedure & Anatomy Explorer</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-neo-navy">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
             Watch the Procedure & Clinical Breakdown
           </h2>
           <p className="text-xs sm:text-sm text-slate-500 mt-1">

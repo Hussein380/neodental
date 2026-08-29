@@ -103,7 +103,7 @@ export const SymptomTriage: React.FC = () => {
               </span>
             </div>
 
-            <h2 className="text-[2.2rem] sm:text-4xl lg:text-[2.8rem] font-extrabold leading-[1.1] tracking-tight text-slate-900">
+            <h2 className="text-[2.2rem] sm:text-4xl lg:text-[2.8rem] font-extrabold leading-[1.1] tracking-tight text-sky-700">
               {t.triage.titleStart} <span className="text-red-600 block sm:inline">{t.triage.titleHighlight}</span>
             </h2>
 
@@ -238,7 +238,7 @@ export const SymptomTriage: React.FC = () => {
                 </span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-sky-700 leading-tight">
                 {t.triage.videoTitleStart}{" "}
                 <span className="text-red-600">{t.triage.videoTitleHighlight}</span>
               </h3>

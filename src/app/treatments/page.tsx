@@ -51,7 +51,7 @@ const treatmentMetaMap: Record<string, TreatmentMeta> = {
   "root-canal-treatment": {
     image: "/images/service_rootcanal_1787732967899.jpg",
     badge: "Tooth Preservation",
-    badgeColor: "bg-neo-navy text-white",
+    badgeColor: "bg-sky-600 text-white",
     duration: "1–2 Visits",
     comfort: "Painless Anesthesia",
     tags: ["Deep Infection", "Pulpitis", "Save Natural Tooth"],
@@ -61,7 +61,7 @@ const treatmentMetaMap: Record<string, TreatmentMeta> = {
   "dental-crowns": {
     image: "/images/procedure_crowns_guide.jpg",
     badge: "Gold, Silver & Restorative",
-    badgeColor: "bg-amber-600 text-white",
+    badgeColor: "bg-sky-700 text-white",
     duration: "2 Visits",
     comfort: "Custom Precision Fit",
     tags: ["Post-Root Canal", "Structural Cap", "High Longevity"],
@@ -71,7 +71,7 @@ const treatmentMetaMap: Record<string, TreatmentMeta> = {
   "restorative-fillings": {
     image: "/images/service_fillings_1787732991474.jpg",
     badge: "Tooth-Colored Filling",
-    badgeColor: "bg-emerald-600 text-white",
+    badgeColor: "bg-sky-600 text-white",
     duration: "30–45 Mins",
     comfort: "Gentle & Fast",
     tags: ["Cavity Repair", "Enamel Bond", "Single Visit"],
@@ -91,7 +91,7 @@ const treatmentMetaMap: Record<string, TreatmentMeta> = {
   "cosmetic-dentistry-veneers": {
     image: "/images/service_cosmetic_1787733042890.jpg",
     badge: "Aesthetic Makeover",
-    badgeColor: "bg-purple-600 text-white",
+    badgeColor: "bg-sky-600 text-white",
     duration: "1–2 Visits",
     comfort: "Minimal Enamel Prep",
     tags: ["Stained Teeth", "Gap Closure", "Smile Harmony"],
@@ -101,7 +101,7 @@ const treatmentMetaMap: Record<string, TreatmentMeta> = {
   "orthodontic-assessment": {
     image: "/images/service_ortho_new_1787740812764.jpg",
     badge: "Alignment & Occlusion",
-    badgeColor: "bg-blue-600 text-white",
+    badgeColor: "bg-sky-600 text-white",
     duration: "Personalized Plan",
     comfort: "Progressive Alignment",
     tags: ["Crowded Teeth", "Overbite/Spacing", "All Ages"],
@@ -111,7 +111,7 @@ const treatmentMetaMap: Record<string, TreatmentMeta> = {
   "removable-appliances": {
     image: "/images/service_dentures_new_1787740801330.jpg",
     badge: "Lab-Crafted Prosthetics",
-    badgeColor: "bg-teal-700 text-white",
+    badgeColor: "bg-sky-700 text-white",
     duration: "Fast Lab Turnaround",
     comfort: "Non-Surgical",
     tags: ["Multiple Missing Teeth", "Natural Mastication", "Comfort Base"],
@@ -119,7 +119,7 @@ const treatmentMetaMap: Record<string, TreatmentMeta> = {
   "preventive-examination": {
     image: "/images/service_preventive_new_1787740825070.jpg",
     badge: "Routine Wellness",
-    badgeColor: "bg-indigo-600 text-white",
+    badgeColor: "bg-sky-600 text-white",
     duration: "45 Mins",
     comfort: "100% Pain-Free",
     tags: ["6-Month Checkup", "Deep Scaling", "Early Detection"],
@@ -127,7 +127,7 @@ const treatmentMetaMap: Record<string, TreatmentMeta> = {
   "dental-laboratory-services": {
     image: "/images/service_lab_new_1787740837341.jpg",
     badge: "On-Site Laboratory",
-    badgeColor: "bg-slate-900 text-amber-400 font-bold",
+    badgeColor: "bg-sky-700 text-white font-bold",
     duration: "Direct Fabrication",
     comfort: "Chairside Refinement",
     tags: ["Direct Custom Fit", "Fast Adjustments", "14th St Eastleigh"],
@@ -476,7 +476,7 @@ export default function TreatmentsHubPage() {
                       </div>
 
                       {/* Title */}
-                      <h3 className="text-xl font-extrabold text-neo-navy mb-2.5 group-hover:text-neo-red transition-colors leading-snug">
+                      <h3 className="text-xl font-extrabold text-sky-700 mb-2.5 group-hover:text-neo-red transition-colors leading-snug">
                         <Link href={`/treatments/${treatment.slug}`}>
                           {((t.treatmentsCards as Record<string, { title: string }>)?.[treatment.id]?.title) || treatment.title}
                         </Link>
@@ -505,10 +505,10 @@ export default function TreatmentsHubPage() {
                   <div className="px-6 pb-6 pt-2 flex items-center justify-between gap-3 border-t border-slate-100 mt-2">
                     <Link
                       href={`/treatments/${treatment.slug}`}
-                      className="text-xs font-bold text-neo-navy hover:text-neo-red flex items-center gap-1.5 transition-colors group/link py-2"
+                      className="text-xs font-bold text-slate-800 hover:text-neo-red flex items-center gap-1.5 transition-colors group/link py-2"
                     >
                       <span>{meta.hasVideo ? "Watch Video & Guide" : "Explore Procedure & 3D"}</span>
-                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-1" />
+                      <ArrowRight className="w-3.5 h-3.5 text-neo-red transition-transform group-hover/link:translate-x-0.5" />
                     </Link>
 
                     <button
@@ -534,12 +534,12 @@ export default function TreatmentsHubPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
         <div className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-12 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-8">
           <div className="space-y-4 max-w-2xl text-left">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-100 text-amber-800 text-xs font-bold">
-              <Microscope className="w-4 h-4 text-amber-600" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-100 text-sky-800 text-xs font-bold">
+              <Microscope className="w-4 h-4 text-sky-600" />
               <span>Direct Laboratory Advantage</span>
             </div>
 
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-neo-navy leading-tight">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-sky-700 leading-tight">
               On-Site Dental Lab for Same-Day Precision & Custom Crafting
             </h3>
 
@@ -549,15 +549,15 @@ export default function TreatmentsHubPage() {
 
             <div className="pt-2 flex flex-wrap gap-4 text-xs font-bold text-slate-700">
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                <CheckCircle2 className="w-4 h-4 text-sky-600" />
                 Zero shipping delays
               </span>
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                <CheckCircle2 className="w-4 h-4 text-sky-600" />
                 Confirmed Gold & Silver options
               </span>
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                <CheckCircle2 className="w-4 h-4 text-sky-600" />
                 Chairside adjustments
               </span>
             </div>
